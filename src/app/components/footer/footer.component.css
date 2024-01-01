@@ -1,0 +1,70 @@
+.container-fluid{
+    background-color: #2D282A;
+}
+.logo{
+    width: 25%;
+}
+.head{
+    font-size: 25px;
+    line-height: 25px;
+    font-weight: 500;
+    color: white;
+}
+.link{
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.linkdiv{
+    display: flex;
+    flex-direction: column;
+}
+.margin{
+    margin-top: 2rem;
+}
+.link:hover{ 
+    color: #652e8d;
+}
+label{
+    color: white;
+}
+.icon{
+    margin-right: 2rem;
+}
+.iconimage{
+    width: 70%;
+}
+.end{
+    display: flex;
+    justify-content: center;
+}
+@media screen and (max-width:992px){
+    .head{
+        font-size: 17px;
+        line-height: 25px;
+        font-weight: 500;
+        color: white;
+    }
+    .link{
+        text-decoration: none;
+        color: white;
+        font-size: 13px;
+        line-height: 21px;
+        font-weight: 500;
+    }
+    .margin{
+        margin-top: 1rem;
+    }
+    .icon{
+        margin-right: 1rem;
+    }
+}
+
+@media screen and (max-width:500px){
+    .head{
+        margin-top: 1rem;
+    }
+}
