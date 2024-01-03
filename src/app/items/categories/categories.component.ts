@@ -14,4 +14,68 @@ export class CategoriesComponent implements OnInit{
   gotoproducts(){
     this.router.navigate(['categories/products'])
   }
+
+  products = [
+    {
+      name: 'SINGLE VANILLA LIPPIE',
+      img: '../../../assets/single.webp',
+      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
+    },
+    {
+      name: 'VANILLA LIPPIES DISPLAY PACK',
+      img: '../../../assets/displaypack.webp',
+      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
+    },
+    {
+      name: 'SINGLE VANILLA LIPPIE',
+      img: '../../../assets/single.webp',
+      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
+    },
+    {
+      name: 'VANILLA LIPPIES DISPLAY PACK',
+      img: '../../../assets/displaypack.webp',
+      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
+    },
+    {
+      name: 'SINGLE VANILLA LIPPIE',
+      img: '../../../assets/single.webp',
+      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
+    },
+    {
+      name: 'VANILLA LIPPIES DISPLAY PACK',
+      img: '../../../assets/displaypack.webp',
+      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
+    },
+    {
+      name: 'SINGLE VANILLA LIPPIE',
+      img: '../../../assets/single.webp',
+      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
+    },
+    {
+      name: 'VANILLA LIPPIES DISPLAY PACK',
+      img: '../../../assets/displaypack.webp',
+      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
+    },
+    {
+      name: 'SINGLE VANILLA LIPPIE',
+      img: '../../../assets/single.webp',
+      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
+    },
+    {
+      name: 'VANILLA LIPPIES DISPLAY PACK',
+      img: '../../../assets/displaypack.webp',
+      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
+    },
+    {
+      name: 'SINGLE VANILLA LIPPIE',
+      img: '../../../assets/single.webp',
+      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
+    },
+    {
+      name: 'VANILLA LIPPIES DISPLAY PACK',
+      img: '../../../assets/displaypack.webp',
+      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
+    },
+
+  ]
 }
