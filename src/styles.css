@@ -8,3 +8,28 @@
     color: white !important;
 }
 
+.accordion{
+    --bs-border-width: 0px;
+    /* --bs-accordion-btn-icon: url('./assets/Icons/plus.png') !important;
+    --bs-accordion-btn-active-icon: url('./assets/Icons/plus.png') !important; */
+}
+.accordion-button::after {
+    background-image: url(./assets/icons/plus.png);   
+}
+.accordion-button:not(.collapsed)::after {
+    background-image: url(./assets/icons/minus.png);   
+}
+.accordion-button:not(.collapsed) {
+    background-color:white !important;
+    box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
+}
+.accordion-button:focus {
+    z-index: 3;
+    border-color: 1px solid lightgray !important;
+    outline: 0;
+    box-shadow: none !important;
+}
+.accordion-button:not(.collapsed) {
+    color: black !important;
+
+}

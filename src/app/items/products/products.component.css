@@ -4,7 +4,6 @@
 .category{
     padding: 120px 0px;
     font-size: 80px;
-    margin-left: 60px;
     color: white;
 }
 .details{
@@ -53,7 +52,6 @@ img{
     .category {
         padding: 70px 0px;
         font-size: 64px;
-        margin-left: 60px;
         color: white;
     }
 }

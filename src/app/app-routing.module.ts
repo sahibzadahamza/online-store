@@ -6,6 +6,8 @@ const routes: Routes = [
   { path: 'categories', loadChildren: () => import('./items/items.module').then(m => m.ItemsModule) },
   { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
   { path: 'Checkout', loadChildren: () => import('./checkout/checkout.module').then(m => m.CheckoutModule) },
+  { path: 'customercare', loadChildren: () => import('./customercare/customercare.module').then(m => m.CustomercareModule) },
+  { path: 'main', loadChildren: () => import('./headermodule/headermodule.module').then(m => m.HeadermoduleModule) },
 
 
 ];
