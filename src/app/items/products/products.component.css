@@ -22,9 +22,23 @@
 }
 .headtwo{
     font-size: 25px;
+    width: 70%;
     line-height: 35px;
     text-align: center;
     font-weight: 600;
+    height: 5rem;
+    text-transform: uppercase;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    justify-content: center; 
+}
+.price{
+    font-size: 25px;
+    line-height: 35px;
+    text-align: center;
+    font-weight: 600;
+    color: #8C50D6;
     height: 5rem;
     text-transform: uppercase;
     align-items: center;
@@ -40,14 +54,19 @@ img{
 
 @media screen and (max-width:992px){
     .headtwo {
-        font-size: 24px;
-        line-height: 27px;
-        text-align: center;
+        font-size: 15px;
+        line-height: 18px;
+        width: 90%;
         font-weight: 600;
-        height: 3rem;
+        height: 4rem;
+        text-align: center;
         align-items: center;
         display: flex;
         justify-content: center;
+    
+    }
+    .price{
+        font-size: 20px;
     }
     .category {
         padding: 70px 0px;
@@ -61,5 +80,16 @@ img{
         font-size: 40px;
         margin-left: 5px;
         color: white;
+    }
+    .headtwo{
+        font-size: 18px;
+        line-height: 20px;
+        width: 80%;
+        font-weight: 600;
+        height: 4rem;
+        text-align: center;
+        align-items: center;
+        display: flex;
+        justify-content: center;
     }
 }
