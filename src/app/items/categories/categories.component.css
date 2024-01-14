@@ -1,5 +1,6 @@
 .background{
-    background-image: url(../../../assets/SHOP.jpg);
+    /* background-image: url(../../../assets/SHOP.jpg); */
+    background-color: #f48722;
 }
 .category{
     padding: 120px 0px;

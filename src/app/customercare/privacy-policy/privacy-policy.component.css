@@ -1,5 +1,6 @@
 .background{
-    background-image: url(../../../assets/SHOP.jpg);
+    /* background-image: url(../../../assets/SHOP.jpg); */
+    background-color: #f48722;
 }
 .faq{
     padding: 120px 0px;

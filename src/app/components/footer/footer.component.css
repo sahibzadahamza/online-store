@@ -4,6 +4,14 @@
 .logo{
     width: 25%;
 }
+.logoanchor{
+    
+    color: #e56d1c;
+    text-decoration: none;
+    font-size: 3rem;
+    font-weight: 600;
+    font-family: cursive;
+}
 .head{
     font-size: 25px;
     line-height: 25px;

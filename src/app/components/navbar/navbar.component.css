@@ -3,10 +3,11 @@
     font-weight: 500;
     line-height: 17px;
     font-family: 'Poppins', sans-serif;
-    color: white
+    color: white;
 }
+
 .navbar{
-    background-color: #652E8D;
+    background-color: #27282a;
 }
 @media (min-width: 992px){
     .navbar-expand-lg .navbar-collapse {
@@ -29,8 +30,16 @@
     font-weight: 500;
     font-family: 'Poppins', sans-serif
 }
-.logoanchor{
+/* .logoanchor{
     width: 30%;
+} */
+.logoanchor{
+    
+    color: #e56d1c;
+    text-decoration: none;
+    font-size: 3rem;
+    font-weight: 600;
+    font-family: cursive;
 }
 .navbar-toggler-icon{
     color: white !important;
