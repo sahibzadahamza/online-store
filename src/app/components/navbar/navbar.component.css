@@ -65,7 +65,9 @@
     padding-left: 2rem;
 }
 @media screen and (max-width:1024px) and (min-width:769px) {
-   
+   .logoanchor{
+    font-size: 2rem;
+   }
 
     .btn {
         font-size: 12px;
@@ -101,7 +103,9 @@
     .logo {
         padding-left: 8px
     }
-
+.logoanchor{
+    font-size: 2rem;
+}
     .navresponse {
         display: block;
         justify-content: space-between;
@@ -150,6 +154,7 @@
 
     .logoanchor{
         padding-left: 0px;
+        font-size: 2rem;
     }
 .logo{
     width: 50%;

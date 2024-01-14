@@ -33,3 +33,8 @@
     color: black !important;
 
 }
+.navbar-toggler-icon {
+    background-image: url('../src/assets/icons/menu.png') !important;
+}
+/* .navbar-toggler {
+border: 1px solid lightgray !important;} */

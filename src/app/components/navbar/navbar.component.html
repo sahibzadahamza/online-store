@@ -10,22 +10,22 @@
         <div class="navresponse ">
           <ul class="navbar-nav m-auto ">
             <li class="nav-item">
-              <a class="nav-link " aria-current="page" routerLink="/">HOME</a>
+              <button class="nav-link btn " aria-current="page" (click)="gotohome()">HOME</button>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="main/about-us">ABOUT US</a>
+              <button class="nav-link btn" (click)="gotoaboutus()">ABOUT US</button>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="categories" >SHOP</a>
+              <button class="nav-link btn" (click)=" gotoshop()">SHOP</button>
             </li>
             
           
             <li class="nav-item">
-              <a class="nav-link " aria-current="page" routerLink="main/contactus">CONTACT US</a>
+              <button class="nav-link btn " aria-current="page" (click)="gotocontactus()">CONTACT US</button>
             </li>
           
               <li class="nav-item">
-                <a class="nav-link " aria-current="page" routerLink="cart"><img src="../../../assets/icons/shopping-cart.png" alt=""></a>
+                <button class="nav-link btn " aria-current="page" (click)=" gotocart()"><img src="../../../assets/icons/shopping-cart.png" alt=""></button>
               </li>
           </ul>
         </div>

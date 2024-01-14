@@ -102,6 +102,9 @@ img{
     justify-content: center; 
     text-align: center;
 }
+.family{
+    font-family:  monospace !important;
+}
 .cartbtn{
     font-size: 22px;
     line-height: 45px;
@@ -158,6 +161,9 @@ img{
     color: #C9B6D3;
 }
 @media screen and (max-width:992px) and (min-width:501px){
+    .imagediv{
+        height: 25rem;
+    }
     .background {
         padding-top: 115px;
         padding-bottom: 80px;
@@ -190,6 +196,17 @@ img{
 }
 
 @media screen and (max-width:500px){
+    .imagediv{
+        height: 25rem;
+    }
+    .headtwotop {
+        font-size: 21px;
+        line-height: 30px;
+        font-weight: 600;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+    }
     .sub{
         font-size: 20px;
         font-weight: 600;
