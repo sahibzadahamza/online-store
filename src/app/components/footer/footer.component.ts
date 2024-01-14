@@ -22,4 +22,8 @@ gotoreturns(){
 gotoprivacy(){
   this.router.navigate(['/customercare/privacy-policy'])
 }
+handlePhoneNumberClick() {
+  // Perform any additional actions when the phone number is clicked
+  console.log('Phone number clicked!');
+}
 }
