@@ -1,4 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-productdetails',
@@ -6,6 +8,10 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrls: ['./productdetails.component.css']
 })
 export class ProductdetailsComponent implements OnInit{
+  selectedProduct: any; // Type should match your product object
+
+  productId: any;
+  product: any; // Define your product type  
   visibleCards = 4; // Default value for screens larger than 500px
   currentIndex = 0;
   categories: any;
@@ -13,11 +19,15 @@ export class ProductdetailsComponent implements OnInit{
   onResize(event: Event) {
     this.updateVisibleCards();
   }
-  constructor(){}
+  constructor(private router: Router,  private productService: ProductService) { }
+
   ngOnInit(): void {
     this.updateVisibleCards();
+   
+   
+  
+ 
   }
-
   currentproducts = [
     {
       img :'../../../assets/single.webp',

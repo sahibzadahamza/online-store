@@ -13,14 +13,14 @@
           
         </div> -->
         <div class="row">
-            <div class="col-md-4" (click)="gotodetails()" *ngFor="let item of products">
-                <div>
+            <div class="col-md-4"  *ngFor="let item of products" >
+                <div >
                     <div>
-                        <img src="{{item?.img}}" alt="">
+                        <img src="{{item?.Product_pic}}" alt="" class="image">
                     </div>
                     <div class="details">
-                        <div class="d-flex justify-content-between">
-                            <div>
+                        <div class="d-flex justify-content-between w-100">
+                            <div style="width: 70%;">
                                 <h2 class="headtwo my-2">{{item?.name}}</h2>
                             </div>
                             <div class="d-flex align-items-center">

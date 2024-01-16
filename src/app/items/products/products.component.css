@@ -22,9 +22,8 @@
     text-align: center;
 }
 .headtwo{
-    font-size: 25px;
-    width: 70%;
-    line-height: 35px;
+    font-size: 22px;
+    line-height: 30px;
     text-align: center;
     font-weight: 600;
     height: 5rem;
@@ -32,11 +31,14 @@
     align-items: center;
     display: flex;
     text-align: center;
-    justify-content: center; 
+    justify-content: start; 
+}
+.image{
+    height: 23rem;
 }
 .price{
-    font-size: 25px;
-    line-height: 35px;
+    font-size: 22px;
+    line-height: 30px;
     text-align: center;
     font-weight: 600;
     color: #8C50D6;
@@ -57,22 +59,24 @@ img{
     .headtwo {
         font-size: 15px;
         line-height: 18px;
-        width: 90%;
         font-weight: 600;
         height: 4rem;
         text-align: center;
         align-items: center;
         display: flex;
-        justify-content: center;
+        justify-content: start;
     
     }
     .price{
-        font-size: 20px;
+        font-size: 15px;
     }
     .category {
         padding: 70px 0px;
         font-size: 64px;
         color: white;
+    }
+    .image{
+        height: 16rem;
     }
 }
 @media screen and (max-width:600px){
@@ -85,12 +89,28 @@ img{
     .headtwo{
         font-size: 18px;
         line-height: 20px;
-        width: 80%;
         font-weight: 600;
         height: 4rem;
         text-align: center;
         align-items: center;
         display: flex;
-        justify-content: center;
+        justify-content: start;
+    }
+}
+@media screen and (max-width:1200px) and (min-width:993px){
+    .image{
+        height: 18rem;
+    }
+    .headtwo{
+        font-size: 20px;
+        line-height: 26px;
+        text-align: center;
+        font-weight: 600;
+        height: 4rem;
+        text-transform: uppercase;
+        align-items: center;
+        display: flex;
+        text-align: center;
+        justify-content: start;
     }
 }

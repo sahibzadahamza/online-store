@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
 
@@ -7,10 +8,14 @@ import {  Router } from '@angular/router';
   styleUrls: ['./categories.component.css']
 })
 export class CategoriesComponent implements OnInit{
-  constructor(private router: Router){
+  categoryId: string | any;
+
+  constructor(private router: Router,  private http:HttpClient){
   }
   ngOnInit(): void {
+  
   }
+ 
   gotoproducts(){
     this.router.navigate(['categories/products'])
   }
