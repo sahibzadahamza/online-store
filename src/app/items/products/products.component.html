@@ -13,7 +13,7 @@
           
         </div> -->
         <div class="row">
-            <div class="col-md-4"  *ngFor="let item of products" >
+            <div class="col-md-4"  *ngFor="let item of products; let i = index" (click)="navigateToProductDetails(item)">
                 <div >
                     <div>
                         <img src="{{item?.Product_pic}}" alt="" class="image">
@@ -31,7 +31,6 @@
                     </div>
                 </div>
             </div>
-           
         </div>
     </div>
 </div>

@@ -10,10 +10,10 @@
     <div class="container">
         <div class="row">
             
-            <div class="col-md-4" (click)="gotoproducts()" *ngFor="let item of products">
+            <div class="col-md-4" (click)="gotoproducts()" *ngFor="let item of category">
                 <div>
                     <div>
-                        <img src="{{item?.img}}" alt="">
+                        <img src="{{item?.category_pic}}" alt="">
                     </div>
                     <div class="details">
                         <h2 class="headtwo my-2">{{item?.name}}</h2>

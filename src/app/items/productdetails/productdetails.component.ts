@@ -1,6 +1,8 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-productdetails',
@@ -9,7 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class ProductdetailsComponent implements OnInit{
   selectedProduct: any; // Type should match your product object
-
+  productdetail:any[] | any
   productId: any;
   product: any; // Define your product type  
   visibleCards = 4; // Default value for screens larger than 500px
@@ -19,15 +21,37 @@ export class ProductdetailsComponent implements OnInit{
   onResize(event: Event) {
     this.updateVisibleCards();
   }
-  constructor(private router: Router,  private productService: ProductService) { }
+  constructor(private router: Router,  private productService: ProductService, private route: ActivatedRoute, private cartservice: CartService) { }
 
   ngOnInit(): void {
     this.updateVisibleCards();
+    this.route.params.subscribe(params => {
+      const productId = params['_id'];
+      console.log('Product ID:', productId);
+
+      // Use productId to fetch and display product details
+      this.productService.getProductById(productId).subscribe((product: any) => { 
+        console.log("this is get product",  product)
+        this.productdetail=product
+      });
+    });
    
-   
-  
- 
   }
+  
+  addToCart(product: any) {
+    this.cartservice.addToCart(product);
+  
+    // Display SweetAlert2 popup
+    Swal.fire({
+      icon: 'success',
+      title: 'Product Added to Cart',
+      text: `${product.name} has been added to your cart.`,
+      showConfirmButton: false,
+      timer: 1500  // Adjust the timer as needed
+    });
+  }
+  
+  
   currentproducts = [
     {
       img :'../../../assets/single.webp',
