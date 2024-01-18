@@ -197,7 +197,7 @@ img{
 
 @media screen and (max-width:500px){
     .imagediv{
-        height: 25rem;
+        height: 20rem;
     }
     .headtwotop {
         font-size: 21px;

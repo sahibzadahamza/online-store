@@ -7,6 +7,12 @@
     font-size: 80px;
     color: white;
 }
+.form-control{
+    font-size: 1.2rem;
+    background-color: rgb(243, 243, 243);
+    height: 3rem;
+    color: gray;
+}
 .details{
     display: flex;
     flex-direction: column;
@@ -114,3 +120,148 @@ img{
         justify-content: start;
     }
 }
+
+
+.btn-warning{
+    background-color:#f48722 !important;
+    color: white;
+}
+  .btn2{
+    background-color:#f48722 !important;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+  }
+  
+  .main-container {
+    position: relative;
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .prev-btn, .next-btn {
+    background-color:#f48722 !important;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    color: black;
+  }
+  
+  .prev-btn {
+    left: 0;
+  }
+  
+  .next-btn {
+    right: 0;
+  }
+  .main-container2 {
+    position: relative;
+  }
+  
+  .prev-btn2, .next-btn2 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+  }
+  
+  .prev-btn2 {
+    left: 0;
+  }
+  
+  .next-btn2 {
+    right: 0;
+  }
+  
+  .imgdiv {
+    max-width: 100%;
+  }
+  .navbar2{
+    /* background-color:white; */
+    margin-top: 1rem;
+  }
+  .city{
+    color: #f48722;
+  }
+  /* .item{
+    text-align: center;
+  } */
+  .firstcarouselimage{
+    border-radius: 50%;
+  }
+  .firstdiv{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .catname{
+    font-size: 0.8rem;
+    margin-bottom: 0px;
+    margin-top: 10px;
+  }
+  .card-title{
+    font-size: 1.1rem !important;
+    width: 80%;
+    height:45px;
+   }
+  @media screen and (max-width:600px){
+    .catname{
+      font-size: 10px !important;
+    }
+   .itemdiv{
+    width: 40%;
+   }
+   .card-date{
+    font-size: 12px;
+   }
+   h5{
+    font-size: 1rem;
+    height: 3rem;
+   }
+   .detail{
+    height: 3rem;
+   }
+   .card{
+    height: 290px;
+   }
+   .card-title{
+    font-size: 1.3rem !important;
+   }
+   .btn2{
+    width: 40px !important;
+   }
+  }
+  
+  /* Default styles */
+  .mobdisplay {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Mobile styles */
+  @media only screen and (max-width: 992px) {
+    .catname{
+      font-size: 0.5rem;
+    }
+    .card-title{
+      font-size: 0.8rem !important;
+      font-weight: 600;
+    }
+  .card-date{
+    font-size: 13px;
+  }
+   .imgdiv{
+    width: 8rem !important;
+   }
+  
+  }
+  

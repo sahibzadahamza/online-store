@@ -11,7 +11,8 @@ import Swal from 'sweetalert2';
 })
 export class ProductdetailsComponent implements OnInit{
   selectedProduct: any; // Type should match your product object
-  productdetail:any[] | any
+  productdetail:any;
+  productsbycategory: any[] | any;
   productId: any;
   product: any; // Define your product type  
   visibleCards = 4; // Default value for screens larger than 500px
@@ -33,9 +34,22 @@ export class ProductdetailsComponent implements OnInit{
       this.productService.getProductById(productId).subscribe((product: any) => { 
         console.log("this is get product",  product)
         this.productdetail=product
+  //  const categoryId= this.productdetail.map((item:any)=>item.categoryId);
+   console.log("this is category id", this.productdetail.categoryId[0]._id)
+   this.productService.getProductByCategory(this.productdetail.categoryId[0]._id).subscribe(res=>{
+    console.log("these are products by category id", res)
+    this.productsbycategory = res
+   })
       });
     });
+
    
+   
+  }
+
+  selectProduct(item:any){
+    console.log("selcted item" , item)
+    this.productdetail = item
   }
   
   addToCart(product: any) {

@@ -7,14 +7,53 @@
   
 </div>
 <div class="container-fluid my-5">
-
+     <div class="container">
+        <h3>Other Categories</h3>
+        <nav class="navbar">
+            <div class="container  main-container">
+              <button class="btn prev-btn" (click)="prev()"><i class="fa fa-chevron-left"></i></button>
+              <div class="item firstdiv" *ngFor="let item of categories | slice: currentIndex : currentIndex + displayItemCount">
+                <div style="display: flex; justify-content: center;">
+                  <div>
+                    <img width="50px" height="50px" [src]="item?.category_pic || '../../../assets/NoImage.jpeg'" alt="" class="firstcarouselimage">
+                  </div>
+                </div>
+                <p class="catname">{{item?.name}}</p>
+              </div>
+              <button class="btn next-btn" (click)="next()"><i class="fa fa-chevron-right"></i></button>
+            </div>
+          </nav>
+     </div>
     <div class="container">
-        <!-- <div class="my-3">
-          
-        </div> -->
+        <div class="my-3 d-flex">
+        <input type="text" class="form-control" placeholder="Search products" [(ngModel)]="searchTerm">
+        <button class="btn btn-warning mx-2" (click)="search()">Search</button>
+        </div>
         <div class="row">
-            <div class="col-md-4"  *ngFor="let item of products; let i = index" (click)="navigateToProductDetails(item)">
-                <div >
+        <!-- <h3>Products</h3> -->
+            <div class="col-md-4"   *ngFor="let item of products; let i = index" (click)="navigateToProductDetails(item)">
+                <div *ngIf="showproducts" >
+                    <div>
+                        <img src="{{item?.Product_pic}}" alt="" class="image">
+                    </div>
+                    <div class="details">
+                        <div class="d-flex justify-content-between w-100">
+                            <div style="width: 70%;">
+                                <h2 class="headtwo my-2">{{item?.name}}</h2>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span class="price">{{item?.price | currency}}</span>
+                            </div>
+                        </div>
+                        <p class="description">{{item?.para}} </p>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <div class="row">
+            <div class="col-md-4"   *ngFor="let item of filteredProducts; let i = index" (click)="navigateToProductDetails(item)">
+                <div *ngIf="!showproducts">
                     <div>
                         <img src="{{item?.Product_pic}}" alt="" class="image">
                     </div>

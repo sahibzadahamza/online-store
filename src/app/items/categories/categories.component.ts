@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import {  Router } from '@angular/router';
+import {  ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class CategoriesComponent implements OnInit{
 
   categoryId: string | any;
 
-  constructor(private router: Router,  private http:HttpClient, private categoryservice: CategoryService){
+  constructor(private router: Router,  private http:HttpClient, private categoryservice: CategoryService, private route:ActivatedRoute){
   }
   ngOnInit(): void {
     this.categoryservice.getCategory().subscribe((res: any) => {
@@ -32,68 +32,8 @@ export class CategoriesComponent implements OnInit{
   gotoproducts(){
     this.router.navigate(['categories/products'])
   }
+  navigateToProduct(id: any) {
+    this.router.navigate(['/categories/products', id]); // Assuming there is an 'id' property in your product object
+  }
 
-  products= [
-    {
-      name: 'SINGLE VANILLA LIPPIE',
-      img: '../../../assets/single.webp',
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'VANILLA LIPPIES DISPLAY PACK',
-      img: '../../../assets/displaypack.webp',
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'SINGLE VANILLA LIPPIE',
-      img: '../../../assets/single.webp',
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'VANILLA LIPPIES DISPLAY PACK',
-      img: '../../../assets/displaypack.webp',
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'SINGLE VANILLA LIPPIE',
-      img: '../../../assets/single.webp',
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'VANILLA LIPPIES DISPLAY PACK',
-      img: '../../../assets/displaypack.webp',
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'SINGLE VANILLA LIPPIE',
-      img: '../../../assets/single.webp',
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'VANILLA LIPPIES DISPLAY PACK',
-      img: '../../../assets/displaypack.webp',
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'SINGLE VANILLA LIPPIE',
-      img: '../../../assets/single.webp',
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'VANILLA LIPPIES DISPLAY PACK',
-      img: '../../../assets/displaypack.webp',
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'SINGLE VANILLA LIPPIE',
-      img: '../../../assets/single.webp',
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'VANILLA LIPPIES DISPLAY PACK',
-      img: '../../../assets/displaypack.webp',
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-
-  ]
 }

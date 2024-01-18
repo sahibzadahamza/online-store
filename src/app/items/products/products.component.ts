@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -8,109 +9,92 @@ import { ProductService } from 'src/app/services/product.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
+  displayItemCount: number = 12;
+  displayItemCount2: number = 3;
+  currentIndex: number = 0;
+  currentIndex2: number = 0;
   selectedOption: string | undefined;
-  products: any[] = []
-  constructor(private router: Router, private renderer: Renderer2, private productservice: ProductService) {
+  products: any[] = [];
+  categories: any[] =[];
+  searchTerm: string = '';
+  filteredProducts: any[] = [];
+  showproducts: boolean = true;
+  constructor(private router: Router, private renderer: Renderer2, private productservice: ProductService, private route: ActivatedRoute, private categoryservice: CategoryService) {
   }
   ngOnInit(): void {
-    this.productservice.getProducts().subscribe((res: any) => {
-      console.log("These are products", res);
-      this.products = res
-        .map((product: any) => {
-          if (product.Product_pic) {
-            return product;
-          } else {
-            return { ...product, Product_pic: '../../../assets/NoImage.jpeg' };
-          }
-        })
-        .reverse(); 
-    });
+    
+
+
+    this.updateDisplayItemCount();
+    this.updateDisplayItemCount2()
+    window.addEventListener('resize', () => this.updateDisplayItemCount());
+    window.addEventListener('resize', () => this.updateDisplayItemCount2());
    
+    this.route.params.subscribe(params => {
+      const productId = params['id'];
+      console.log('Product ID:', productId);
+
+      // Use productId to fetch and display product details
+      this.productservice.getProductByCategory(productId).subscribe((product: any) => { 
+        console.log("this is get product by id",  product)
+        this.products=product
+      });
+    });
+ 
+    this.categoryservice.getCategory().subscribe((res:any)=>{
+      this.categories = res
+      console.log("these are categorueis in product" , res)
+    })
     
   }
+  
   navigateToProductDetails(product: any) {
     this.router.navigate(['/categories/details', product._id]); // Assuming there is an 'id' property in your product object
   }
-  // gotodetails() {
-  //   this.router.navigate(['categories/details'])
-  // }
-  
  
- 
-  product = [
-    {
-      name: 'SINGLE VANILLA LIPPIE',
-      img: '../../../assets/single.webp',
-      price: 5.00,
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'VANILLA LIPPIES DISPLAY PACK',
-      img: '../../../assets/displaypack.webp',
-      price: 15.00,
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'SINGLE VANILLA LIPPIE',
-      img: '../../../assets/single.webp',
-      price: 10.00,
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'VANILLA LIPPIES DISPLAY PACK',
-      img: '../../../assets/displaypack.webp',
-      price: 19.00,
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'SINGLE VANILLA LIPPIE',
-      img: '../../../assets/single.webp',
-      price: 8.00,
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'VANILLA LIPPIES DISPLAY PACK',
-      img: '../../../assets/displaypack.webp',
-      price: 25.00,
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'SINGLE VANILLA LIPPIE',
-      img: '../../../assets/single.webp',
-      price: 30.00,
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'VANILLA LIPPIES DISPLAY PACK',
-      img: '../../../assets/displaypack.webp',
-      price: 2.99,
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'SINGLE VANILLA LIPPIE',
-      img: '../../../assets/single.webp',
-      price: 12.00,
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'VANILLA LIPPIES DISPLAY PACK',
-      img: '../../../assets/displaypack.webp',
-      price: 11.00,
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'SINGLE VANILLA LIPPIE',
-      img: '../../../assets/single.webp',
-      price: 13.00,
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
-    {
-      name: 'VANILLA LIPPIES DISPLAY PACK',
-      img: '../../../assets/displaypack.webp',
-      price: 19.00,
-      para: 'Luxurious, High Shine, Hydrating Vanilla lip gloss. Giving you a polished look enhancing the natural colour of your lips.'
-    },
 
-  ]
+  // This method will be called when the search button is clicked
+  search() {
+    this.filteredProducts = this.products.filter(item =>
+      item.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+    );
+    this.showproducts = false
+
+  }
+
+  updateDisplayItemCount() {
+    // Adjust displayItemCount based on screen size
+    this.displayItemCount = window.innerWidth < 600 ? 3 : 12;
+    this.currentIndex = 0;
+  }
+
+  updateDisplayItemCount2() {
+    // Adjust displayItemCount based on screen size
+    this.displayItemCount2 = window.innerWidth < 600 ? 1 : 3;
+    this.currentIndex = 0;
+  }
+
+  showPrevButton(): boolean {
+    return this.categories.length > this.displayItemCount && this.currentIndex > 0;
+  }
+
+  showNextButton(): boolean {
+    return (
+      this.categories.length > this.displayItemCount &&
+      this.currentIndex < this.categories.length - this.displayItemCount
+    );
+  }
+  prev() {
+    this.currentIndex = (this.currentIndex - 1 + this.categories.length) % this.categories.length;
+
+      // this.currentIndex -= (this.currentIndex + 1) % this.displayItemCount;
+
+  }
+
+  next() {
+    this.currentIndex = (this.currentIndex + 1) % this.categories.length;
+      // this.currentIndex += this.displayItemCount;
+
+  }
 
 }

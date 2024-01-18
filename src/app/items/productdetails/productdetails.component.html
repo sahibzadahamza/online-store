@@ -3,7 +3,7 @@
         <div class="row py-5" *ngIf="productdetail">
             <div class="col-md-6 ">
                 <div>
-                    <img src="{{productdetail?.Product_pic}}" alt="" width="100%">
+                    <img src="{{productdetail?.Product_pic}}" alt="" width="100%" class="mainimg">
                 </div>
                 <div class="d-flex mt-3">
                     <div style="width: 5rem;">
@@ -70,16 +70,16 @@
                 <ng-container class="carousel-inner">
                   <div class="carousel-item active">
                     <div class="row">
-                      <ng-container *ngFor="let item of currentproducts; let i = index">
+                      <ng-container *ngFor="let item of productsbycategory; let i = index">
                         <div class="col-md-3 col-sm-12 mt-2" *ngIf="i >= currentIndex && i < currentIndex + visibleCards">
-                         <div>
+                         <div (click)="selectProduct(item)">
                           <div>
-                            <img *ngIf="item.img" src="{{item.img}}" class="image " />
-                            <img *ngIf="!item.img" src="../../../../assets/patronpallogo.jpg " class="image border"/>
+                            <img  src="{{item?.Product_pic}}" class="image " />
+                            <!-- <img *ngIf="!item.img" src="../../../../assets/patronpallogo.jpg " class="image border"/> -->
                           </div>
     
                           <div  class=" mt-2 p-4">
-                            <h4 class="d-flex justify-content-center relatedproductname">{{item.name}}</h4>
+                            <h4 class="d-flex justify-content-center relatedproductname">{{item?.name}}</h4>
                          
                           </div>
                         </div>
