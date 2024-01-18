@@ -7,13 +7,14 @@
   
 </div>
 <div class="container-fluid my-5">
+
      <div class="container">
         <h3>Other Categories</h3>
         <nav class="navbar">
             <div class="container  main-container">
               <button class="btn prev-btn" (click)="prev()"><i class="fa fa-chevron-left"></i></button>
               <div class="item firstdiv" *ngFor="let item of categories | slice: currentIndex : currentIndex + displayItemCount">
-                <div style="display: flex; justify-content: center;">
+                <div style="display: flex; justify-content: center;" (click)="showproductsofcategory(item._id)">
                   <div>
                     <img width="50px" height="50px" [src]="item?.category_pic || '../../../assets/NoImage.jpeg'" alt="" class="firstcarouselimage">
                   </div>
@@ -24,17 +25,18 @@
             </div>
           </nav>
      </div>
+
     <div class="container">
         <div class="my-3 d-flex">
         <input type="text" class="form-control" placeholder="Search products" [(ngModel)]="searchTerm">
         <button class="btn btn-warning mx-2" (click)="search()">Search</button>
         </div>
+
         <div class="row">
-        <!-- <h3>Products</h3> -->
             <div class="col-md-4"   *ngFor="let item of products; let i = index" (click)="navigateToProductDetails(item)">
                 <div *ngIf="showproducts" >
                     <div>
-                        <img src="{{item?.Product_pic}}" alt="" class="image">
+                        <img src="{{item?.Product_pic || '../../../assets/NoImage.jpeg'}}" alt="" class="image">
                     </div>
                     <div class="details">
                         <div class="d-flex justify-content-between w-100">
@@ -49,8 +51,8 @@
                     </div>
                 </div>
             </div>
-           
         </div>
+
         <div class="row">
             <div class="col-md-4"   *ngFor="let item of filteredProducts; let i = index" (click)="navigateToProductDetails(item)">
                 <div *ngIf="!showproducts">

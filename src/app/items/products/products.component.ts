@@ -97,4 +97,13 @@ export class ProductsComponent implements OnInit {
 
   }
 
+
+  showproductsofcategory(id : any){
+    console.log("id" , id)
+    this.productservice.getProductByCategory(id).subscribe((res:any)=>{
+       console.log("selected category" , res)
+       this.products = res
+    })
+  }
+
 }
