@@ -1,11 +1,152 @@
 
-
+<form [formGroup]="checkoutForm">
 <div class="container-fluid py-4">
     <div class="container">
         <div class="row">
-            <app-checkoutform></app-checkoutform>
-            <app-checkout-order></app-checkout-order>
-            <app-payment-form></app-payment-form>
+            <h1 class="head">Checkout</h1>
+            <h3 class="billing">Billing details</h3>
+           
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="inputdiv">
+                            <label for="" class="mb-2">First name</label>
+                            <input type="text" class="form-control" name="firstname" formControlName="firstname">
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="inputdiv floatdiv ">
+                            <label for="" class="mb-2">Last name</label>
+                            <input type="text" class="form-control" name="lastname" formControlName="lastname">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="inputdiv">
+                            <label for="" class="mb-2">Company name (optional)</label>
+                            <input type="text" class="form-control" name="companyname" formControlName="companyname">
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="inputdiv floatdiv">
+                            <label for="" class="mb-2">Country/Region</label>
+                            <select class="form-select" name="country" id="country" formControlName="country">
+                                <option value="" disabled selected>Select Country</option>
+                                <option *ngFor="let country of countries" [value]="country.name">{{country.name}}</option>
+                           </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="inputdiv">
+                            <label for="" class="my-2">Street address</label>
+                            <input type="text" class="form-control" name="address" placeholder="House number and street name" formControlName="address">
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="inputdiv floatdiv">
+                            <label for="" class="my-2">Address2</label>
+                            <input type="text" class="form-control" name="address2"
+                                placeholder="Apartment, suite, unit, etc, (optional)" formControlName="address2">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="inputdiv">
+                            <label for="" class="mb-2">Town/City</label>
+                            <input type="text" class="form-control" name="town" formControlName="town">
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="inputdiv floatdiv">
+                            <label for="" class="mb-2">County (optional)</label>
+                            <input type="text" class="form-control" name="county" formControlName="county">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="inputdiv">
+                            <label for="" class="mb-2">Post code</label>
+                            <input type="text" class="form-control" name="postcode" formControlName="postcode">
+                        </div>
+                    </div>
+                    <div class="col-md-6 ">
+                        <div class="inputdiv floatdiv">
+                            <label for="" class="mb-2">Phone</label>
+                            <input type="text" class="form-control" name="phone" formControlName="phone">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="inputdiv">
+                            <label for="" class="mb-2">Email Address</label>
+                            <input type="text" class="form-control" name="email" formControlName="email">
+                        </div>
+                    </div>
+                </div>
+           
+        </div>
+
+        <div class="row my-5">
+            <div class="col-md-12">
+              <div>
+                <h2>Your Order</h2>
+              </div>
+              <div class=" ">
+                <table class="table border">
+                  <thead>
+                    <th scope="col">Product</th>
+                    <th>Subtotal</th>
+                  </thead>
+                  <tbody>
+                    <!-- Loop through the items in checkoutData.cartItems -->
+                    <tr *ngFor="let item of checkoutData.cartItems">
+                      <td>{{ item?.name }} × {{ item?.quantity }}</td>
+                      <td>{{ item?.subtotal | currency }}</td>
+                    </tr>
+                    <!-- Display Subtotal, Shipping, and Total -->
+                    <tr>
+                      <th>Subtotal</th>
+                      <td>{{ checkoutData?.cartSubtotal | currency }}</td>
+                    </tr>
+                    <tr>
+                      <th>Shipping</th>
+                      <td>{{ checkoutData?.shippingPrice | currency }}</td>
+                    </tr>
+                    <tr>
+                      <th>Total</th>
+                      <td>{{ (checkoutData?.cartSubtotal + checkoutData?.shippingPrice) | currency }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+          <div class="row p-3" style="background-color: #EBE9EB;">
+            <span class="mb-4">Debit/Credit Card</span>
+            <div>
+                <div class="row p-2" style="background-color: #DCD7E3;">
+                    <span class="mb-4">Pay with your your Debit/Credit Card</span>
+        
+                    <div class="col-md-12 ">
+                        <label for="">Card Number</label>
+                        <input type="text" class="form-control card" name="cardNumber" formControlName="cardNumber">
+                      
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <label for="">Expiry Date</label>
+                        <input type="date" placeholder="MM/YY" class="form-control" name="expiryDate" formControlName="expiryDate">
+                    </div>
+                    <div class="col-md-6 mt-3">
+                        <label for="">Card Code (CVC)</label>
+                        <input type="number" placeholder="CVC" class="form-control" name="cvv" formControlName="cvv">
+                    </div>
+        
+                </div>
+                <div class="my-3">
+                    <span>Your personal data will be used to process your order, support your experience throughout this website, and
+                        for other purposes described in our privacy policy.</span>
+                </div>
+              <div class="d-flex justify-content-end">
+                <button class="btn btn-order"  (click)="placeOrder()">Place order</button>
+              </div>
+            </div>
         </div>
     </div>
 </div>
+</form>

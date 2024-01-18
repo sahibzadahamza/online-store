@@ -8,7 +8,12 @@ export class CartService {
   private cartItems: any[] = [];
   private cartItemsChangedSubject: BehaviorSubject<void> = new BehaviorSubject<any>(null);
   cartItemsChanged = this.cartItemsChangedSubject.asObservable();
+  private cartData = new BehaviorSubject<any>(null);
+  cartData$ = this.cartData.asObservable();
 
+  setCartData(data: any) {
+    this.cartData.next(data);
+  }
 
   addToCart(product: any) {
     this.cartItems.push(product);
