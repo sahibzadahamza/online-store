@@ -9,13 +9,13 @@ img{
     width: 60%;
 }
 h2{
-    color: #652E8D;
+    color: #E56D1C;
 }
 .col-md-5{
     padding: 0px !important;
 }
 .btn-primary{
-    background-color: #652E8D;
+    background-color: #E56D1C;
     color: white;
     font-size: 1rem;
     border: none;
@@ -25,7 +25,7 @@ h2{
     width: 3rem;
 }
 .btn-checkout{
-    background-color: #652E8D;
+    background-color: #E56D1C;
     width: 100%;
     color: white;
     display: flex;
