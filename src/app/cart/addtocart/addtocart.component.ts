@@ -8,6 +8,7 @@ import { CartService } from 'src/app/services/cart.service';
   styleUrls: ['./addtocart.component.css']
 })
 export class AddtocartComponent implements OnInit{
+
   cartSubtotal: number = 0;
   total: number = 0; 
   shippingPrice: number = 10; 
@@ -18,6 +19,7 @@ export class AddtocartComponent implements OnInit{
       item.subtotal = item.price;
     });
     this.calculateCartSubtotal();
+    this.cartService.updateCartItemCount();
 
   }
   gotocheckout() {

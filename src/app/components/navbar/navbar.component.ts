@@ -1,14 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
-  constructor(private router:Router){}
+export class NavbarComponent implements OnInit {
+  cartItemCount: number = 0;
 
+  constructor(private router:Router, private cartService: CartService){}
+  ngOnInit(): void {
+    this.cartService.currentCartItemCount.subscribe(count => {
+      this.cartItemCount = count;
+    });
+  }
   gotohome(){
     this.router.navigate(['/'])
   }

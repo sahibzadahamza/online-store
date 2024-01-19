@@ -11,12 +11,24 @@ export class CartService {
   private cartData = new BehaviorSubject<any>(null);
   cartData$ = this.cartData.asObservable();
 
+  private cartItemCount = new BehaviorSubject<number>(0);
+  currentCartItemCount = this.cartItemCount.asObservable();
+
+  // Other methods to manage cart items...
+
+  updateCartItemCount() {
+    const itemCount = this.cartItems.length;
+    this.cartItemCount.next(itemCount);
+  }
+
   setCartData(data: any) {
     this.cartData.next(data);
   }
 
   addToCart(product: any) {
     this.cartItems.push(product);
+    this.updateCartItemCount();
+
   }
 
   getCartItems() {
