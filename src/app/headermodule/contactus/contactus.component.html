@@ -5,50 +5,46 @@
         </div>
     </div>
 </div>
-<form action="">
-<div class="container-fluid my-5">
-    <div class="container">
-        
-                <h1>Reach Out To Us</h1>
-                <p>For any business enquiries please fill out the form below:</p>
-         
-     
-    
-    <div class="row p-4 rounded backgroundrow">
-        
-            <div class="col-md-6">
-                <div>
-                    <label for="">Firstname</label>
-                    <input type="text" class="form-control">
+<form [formGroup]="contactForm" (ngSubmit)="submit()">
+    <div class="container-fluid my-5">
+        <div class="container">
+            <h1>Reach Out To Us</h1>
+            <p>For any business enquiries please fill out the form below:</p>
+            <div class="row p-4 rounded backgroundrow">
+                <div class="col-md-6">
+                    <div>
+                        <label for="">Firstname</label>
+                        <input type="text" class="form-control" formControlName="firstname">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <label for="">Surname</label>
+                        <input type="text" class="form-control" formControlName="lastname">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <label for="">Email</label>
+                        <input type="text" class="form-control" formControlName="email">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div>
+                        <label for="">Telephone</label>
+                        <input type="text" class="form-control" formControlName="phone">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="">Message</label>
+                    <textarea name="" id="" cols="30" rows="10" class="form-control"
+                        formControlName="message"></textarea>
+                </div>
+                <div class="col-md-12">
+                    <button class="btn" type="submit">SUBMIT</button>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div>
-                    <label for="">Surname</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div>
-                    <label for="">Email</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div>
-                    <label for="">Telephone</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-            <div class="col-md-12">
-                <label for="">Message</label>
-                <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
-            </div>
-            <div class="col-md-12">
-                <button class="btn" type="submit">SUBMIT</button>
-            </div>
-      
         </div>
     </div>
-</div>
 </form>
+
