@@ -2,9 +2,7 @@
     border: 1px solid lightgray;
     border-radius: 5px !important;
 }
-.form-control{
-    width: 30%;
-}
+
 img{
     width: 60%;
 }
@@ -22,7 +20,7 @@ h2{
     font-weight: 600;
 }
 .form-control{
-    width: 3rem;
+    width: 4rem;
 }
 .btn-checkout{
     background-color: #E56D1C;
