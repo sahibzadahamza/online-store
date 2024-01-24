@@ -52,7 +52,7 @@ h2{
     font-size: 14px;
 }
 .head{
-    color: #652E8D!important;
+    color: #e56d1c!important;
 }
 
 @media screen and (max-width:600px){
@@ -70,7 +70,7 @@ h2{
 .btn-order{
     color: #FFFFFF!important;
     border-width: 0px!important;
-    background-color: #652E8D;
+    background-color: #e56d1c;
     padding: 10px 1.3rem;
     font-size: 1.2rem;
 }
