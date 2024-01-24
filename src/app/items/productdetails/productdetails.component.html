@@ -16,19 +16,21 @@
                 <div class="d-block">
                     <h1>{{productdetail?.title}}</h1>
                     <span class="price ">{{productdetail?.price | currency}}</span> <br>
+                    <span class="Ingredients ">Discount :{{productdetail?.discount | currency}}</span> <br>
+
                     
-                    <h2 class="details">Brand Name: {{productdetail?.brandName}}</h2>
+                    <h2 class="details" style="color:#e56d1c; font-weight: 600;">Brand Name: {{productdetail?.brandName}}</h2>
                     <div class="buttondiv mb-3">
                         <button class="btn addtocart" (click)="addToCart(productdetail)">ADD TO CART</button>
                     </div>
-                    <p class="desc ">{{productdetail?.shortDescription}}</p>
+                    <p class="desc ">{{productdetail?.description}}</p>
                 </div>
                 <div>
-                    <div class="d-flex details">Product Category : <span class="mx-3">{{productdetail?.categoryId?.categoryName}}</span></div>
-                    <div class="d-flex details">Size : <span span class="mx-3">{{productdetail?.size}}</span></div>
-                    <div class="d-flex details">Weight : <span span class="mx-3">{{productdetail?.weight}}</span></div>
-                    <div class="d-flex details">Volume : <span span class="mx-3">{{productdetail?.volume}}</span></div>
-                    <div class="d-flex details">Dimensions : <span span class="mx-3">{{productdetail?.dimentions}}</span></div>
+                    <div class="d-flex details"> <span class="Ingredients">Product Category :</span> <span class="mx-3">{{productdetail?.categoryId?.categoryName}}</span></div>
+                    <div class="d-flex details"> <span class="Ingredients">Size : </span><span span class="mx-3">{{productdetail?.size}}</span></div>
+                    <div class="d-flex details"><span class="Ingredients">Weight :</span> <span span class="mx-3">{{productdetail?.weight}}</span></div>
+                    <div class="d-flex details"><span class="Ingredients">Volume :</span> <span span class="mx-3">{{productdetail?.volume}}</span></div>
+                    <div class="d-flex details"><span class="Ingredients">Dimensions:</span> <span span class="mx-3">{{productdetail?.dimentions}}</span></div>
                 </div>
                 <div class="d-block">
                     <h3 class="Ingredients">Ingredients</h3>
