@@ -22,8 +22,8 @@
     text-align: center;
 }
 .headtwo{
-    font-size: 25px;
-    line-height: 35px;
+    font-size: 22px;
+    line-height: 25px;
     text-align: center;
     font-weight: 600;
     height: 5rem;
@@ -33,7 +33,7 @@
 }
 img{
     width: 100%;
-    height: 22rem;
+    height: 18rem;
 }
 .col-md-4{
     cursor: pointer;
@@ -41,8 +41,8 @@ img{
 
 @media screen and (max-width:992px){
     .headtwo {
-        font-size: 24px;
-        line-height: 27px;
+        font-size: 13px;
+        line-height: 15px;
         text-align: center;
         font-weight: 600;
         height: 3rem;
@@ -55,6 +55,9 @@ img{
         font-size: 64px;
         color: white;
     }
+    img{
+        height: 14rem;
+    }
 }
 @media screen and (max-width:600px){
     .category {
@@ -65,5 +68,19 @@ img{
     }
     img{
         height: 20rem;
+    }
+    .headtwo{
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (max-width:1200px) and (min-width:993px){
+    img{
+        height: 16rem;
+    }
+    .headtwo{
+        font-size: 19px;
+        line-height: 23px;
+        height: 4rem;
     }
 }

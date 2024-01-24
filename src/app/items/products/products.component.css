@@ -9,7 +9,7 @@
 }
 .form-control{
     font-size: 1.2rem;
-    background-color: rgb(243, 243, 243);
+    background-color: #f9f9f9;
     height: 3rem;
     color: gray;
 }
@@ -28,8 +28,8 @@
     text-align: center;
 }
 .headtwo{
-    font-size: 17px;
-    line-height: 26px;
+  font-size: 13px;
+  line-height: 21px;
     text-align: center;
     font-weight: 600;
     height: 5rem;
@@ -40,10 +40,10 @@
     justify-content: start; 
 }
 .image{
-    height: 23rem;
+    height: 20rem;
 }
 .price{
-    font-size: 22px;
+    font-size: 15px;
     line-height: 30px;
     text-align: center;
     font-weight: 600;
@@ -105,19 +105,22 @@ img{
 }
 @media screen and (max-width:1200px) and (min-width:993px){
     .image{
-        height: 18rem;
+        height: 16rem;
     }
     .headtwo{
-        font-size: 20px;
-        line-height: 26px;
-        text-align: center;
-        font-weight: 600;
-        height: 4rem;
-        text-transform: uppercase;
-        align-items: center;
-        display: flex;
-        text-align: center;
-        justify-content: start;
+      font-size: 11px;
+    line-height: 14px;
+    text-align: center;
+    font-weight: 600;
+    height: 4rem;
+    text-transform: uppercase;
+    align-items: center;
+    display: flex;
+    text-align: center;
+    justify-content: start;;
+    }
+    .price{
+      font-size: 12px;
     }
 }
 
@@ -212,6 +215,13 @@ img{
     height:45px;
    }
   @media screen and (max-width:600px){
+    .image{
+      height: auto !important;
+    }
+    .headtwo{
+      font-size: 13px !important;
+      line-height: 15px !important;
+    }
     .catname{
       font-size: 10px !important;
     }
@@ -262,6 +272,13 @@ img{
    .imgdiv{
     width: 8rem !important;
    }
-  
+  .headtwo{
+    font-size: 10px;
+    line-height: 12px;
+    height: 5rem;
+  }
+  .image{
+    height: 14rem;
+  }
   }
   
