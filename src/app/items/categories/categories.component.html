@@ -13,10 +13,10 @@
             <div class="col-md-4"  *ngFor="let item of category">
                 <div (click)="navigateToProduct(item._id)">
                     <div>
-                        <img src="{{item?.category_pic}}" alt="">
+                        <img src="{{item?.category_Pic}}" alt="">
                     </div>
                     <div class="details">
-                        <h2 class="headtwo my-2">{{item?.name}}</h2>
+                        <h2 class="headtwo my-2">{{item?.categoryName}}</h2>
                         <!-- <p class="description">{{item?.para}} </p> -->
                     </div>
                 </div>

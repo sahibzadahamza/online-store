@@ -1,9 +1,9 @@
 
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Product } from '../interfaces/product';
 import { HttpClient } from '@angular/common/http';
 import {Observable,of,} from 'rxjs';
+import { product } from '../interfaces/product';
 
 @Injectable({
   providedIn: 'root'
@@ -11,17 +11,17 @@ import {Observable,of,} from 'rxjs';
 export class ProductService {
   public apiUrl = environment.apiUrl
   productUrl = this.apiUrl +  '/Product'
-  reviewUrl = this.apiUrl + '/review'
+  // reviewUrl = this.apiUrl + '/review'
   constructor(private http:HttpClient,) { }
 
   
-  getProducts():Observable<Product> {
-    return this.http.get<Product>(this.productUrl)
+  getProducts():Observable<product> {
+    return this.http.get<product>(this.productUrl)
    }
-   getProductById( id: string): Observable<Product>{
-     return this.http.get<Product>(this.productUrl +'/'+ id )
+   getProductById( id: string): Observable<product>{
+     return this.http.get<product>(this.productUrl +'/'+ id )
    }
-   getProductByCategory(id: string):Observable<Product[]> {
-    return this.http.get<Product[]>(this.productUrl + '?categoryId=' + id);
+   getProductByCategory(id: string):Observable<product[]> {
+    return this.http.get<product[]>(this.productUrl + '?categoryId=' + id);
   }
 }

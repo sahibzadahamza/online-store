@@ -1,62 +1,30 @@
-
-export interface Product  {
-    _id: string;
-    categoryName:string;
-    categoryParents: string;
-    barCode: string;
-    name: string;
-    price: number;
-    retailPrice: number;
-    inHouseTaxValue?: number;
-    takeawayTaxValue?: number;
-    shortDescription: string;
-    fullDescription: string;
-    order: number;
-    totalQuantity:number;
-    quantity:number;
-    active: boolean;
-    categoryId: string;
-    inHouseTaxId: string;
-    takeawayTaxId: string;
-    hasPicture: boolean;
-    productPictureId: any
-    productType: any
-    Product_pic:string
-    userId:any
+export interface product{
+  _id:string;
+  title:string;
+  size:string
+  weight:string
+  brandName:string,
+  dimentions:string,
+  ingredients:string,
+  price:string,
+  volume:string,
+  description:string,
+  discount:string,
+  categoryId:string;
+  product_Pic:[string]
 }
-export interface productWithQty{
-    price: number;
-    productId: string;
-    qty: number;
+export class productClass{
+  _id?:string;
+  title!: string;
+  size!:string
+  weight!:string
+  brandName!:string
+  dimentions!:string
+  ingredients!:string
+  price!:string
+  volume!:string
+  description!:string
+  categoryId!:string
+  discount!:string
+  product_Pic!:[string]                                             
 }
-export interface tax{
-  value: number;
-  userId: any;
-  byDefault: boolean;
-  name:string;
-  addtax:number;
-}
-
-// export class ProductClass {
-//   _id: string;
-//   categoryName:string;
-//   categoryParents: string;
-//   barCode: string;
-//   name: string;
-//   totalQuantity:number;
-//   quantity:number;
-//   price: number;
-//   retailPrice: number;
-//   inHouseTaxValue: number;
-//   takeawayTaxValue: number;
-//   shortDescription: string;
-//   fullDescription: string;
-//   order: number;
-//   active: boolean;
-//   categoryId: string;
-//   inHouseTaxId: string;
-//   takeawayTaxId: string;
-//   hasPicture: boolean;
-//   productPictureId: any
-//   productType: any
-// }

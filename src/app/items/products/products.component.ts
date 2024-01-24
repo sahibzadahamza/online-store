@@ -48,8 +48,8 @@ export class ProductsComponent implements OnInit {
     
   }
   
-  navigateToProductDetails(product: any) {
-    this.router.navigate(['/categories/details', product._id]); // Assuming there is an 'id' property in your product object
+  navigateToProductDetails(id: any) {
+    this.router.navigate(['/categories/details/'+ id]); // Assuming there is an 'id' property in your product object
   }
  
 

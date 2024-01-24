@@ -26,7 +26,7 @@ export class AddtocartComponent implements OnInit{
     // Assuming you have a variable named 'cartItems', 'cartSubtotal', 'shippingPrice', and others
     const checkoutData = {
       cartItems: this.cartItems.map(item => ({
-        name: item.name,
+        name: item.title,
         price: item.price,
         quantity: item.quantity,  // Ensure 'quantity' is present in each item
         subtotal: item.subtotal

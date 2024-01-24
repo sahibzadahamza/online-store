@@ -59,6 +59,10 @@ h1{
     font-size: 1.3rem;
     font-weight: 600;
     text-align: center;
+    text-transform: capitalize;
+}
+.belowpic{
+    cursor: pointer;
 }
 @media screen and (max-width:600px){
     .marginonmob{

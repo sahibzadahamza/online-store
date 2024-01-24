@@ -1,43 +1,38 @@
 <div class="container-fluid ">
     <div class="container ">
         <div class="row py-5" *ngIf="productdetail">
-            <div class="col-md-6 ">
-                <div>
-                    <img src="{{productdetail?.Product_pic || '../../../assets/NoImage.jpeg' }}" alt="" width="100%" class="mainimg">
-                </div>
-                <div class="d-flex mt-3">
-                    <div style="width: 5rem;">
-                        <img src="../../../assets/single.webp" alt="" width="100%">
-                    </div>
-                    <div class="mx-4" style="width: 5rem;">
-                        <img src="../../../assets/single.webp" alt="" width="100%">
-                    </div>
-                    <div style="width: 5rem;">
-                        <img src="../../../assets/single.webp" alt="" width="100%">
-                    </div>
-                </div>
+          <div class="col-md-6">
+            <div>
+              <img src="{{selectedImage || productdetail?.product_Pic[0] || '../../../assets/NoImage.jpeg' }}" alt="" width="100%" class="mainimg">
             </div>
+            <div class="d-flex mt-3">
+              <div style="width: 5rem;" *ngFor="let pic of productdetail?.product_Pic">
+                <img src="{{pic}}" alt="" width="100%" class="belowpic" (click)="selectImage(pic)">
+              </div>
+            </div>
+          </div>
+          
             <div class="col-md-6 marginonmob">
                 <div class="d-block">
-                    <h1>{{productdetail?.name}}</h1>
+                    <h1>{{productdetail?.title}}</h1>
                     <span class="price ">{{productdetail?.price | currency}}</span> <br>
                     
-                    <h2 class="details">Brand Name: Buy Delight</h2>
+                    <h2 class="details">Brand Name: {{productdetail?.brandName}}</h2>
                     <div class="buttondiv mb-3">
                         <button class="btn addtocart" (click)="addToCart(productdetail)">ADD TO CART</button>
                     </div>
                     <p class="desc ">{{productdetail?.shortDescription}}</p>
                 </div>
                 <div>
-                    <div class="d-flex details">Product Category : <span class="mx-3">Makeup</span></div>
-                    <div class="d-flex details">Size : <span span class="mx-3">Unknown</span></div>
-                    <div class="d-flex details">Weight : <span span class="mx-3">300gm</span></div>
-                    <div class="d-flex details">Volume : <span span class="mx-3">400 cubic meters</span></div>
-                    <div class="d-flex details">Dimensions : <span span class="mx-3">10" 5" 4"</span></div>
+                    <div class="d-flex details">Product Category : <span class="mx-3">{{productdetail?.categoryId?.categoryName}}</span></div>
+                    <div class="d-flex details">Size : <span span class="mx-3">{{productdetail?.size}}</span></div>
+                    <div class="d-flex details">Weight : <span span class="mx-3">{{productdetail?.weight}}</span></div>
+                    <div class="d-flex details">Volume : <span span class="mx-3">{{productdetail?.volume}}</span></div>
+                    <div class="d-flex details">Dimensions : <span span class="mx-3">{{productdetail?.dimentions}}</span></div>
                 </div>
                 <div class="d-block">
                     <h3 class="Ingredients">Ingredients</h3>
-                    <p class="">Paraffinum, Liquidum, Polybutene, Hydrogenated Sterene/Isoprene Copolimer, Fragrance</p>
+                    <p class="">{{productdetail?.ingredients}}</p>
                 </div>
                 
             </div>
@@ -71,15 +66,15 @@
                   <div class="carousel-item active">
                     <div class="row">
                       <ng-container *ngFor="let item of productsbycategory; let i = index">
-                        <div class="col-md-3 col-sm-12 mt-2" *ngIf="i >= currentIndex && i < currentIndex + visibleCards">
-                         <div (click)="selectProduct(item)">
+                        <div class="col-md-3 col-sm-12 mt-2 " *ngIf="i >= currentIndex && i < currentIndex + visibleCards">
+                         <div (click)="selectProduct(item)" style="cursor: pointer;">
                           <div>
-                            <img  src="{{item?.Product_pic || '../../../assets/NoImage.jpeg'}}" class="image " />
+                            <img  src="{{item?.product_Pic[0] || '../../../assets/NoImage.jpeg'}}" class="image " />
                             <!-- <img *ngIf="!item.img" src="../../../../assets/patronpallogo.jpg " class="image border"/> -->
                           </div>
     
                           <div  class=" mt-2 p-4">
-                            <h4 class="d-flex justify-content-center relatedproductname">{{item?.name}}</h4>
+                            <h4 class="d-flex justify-content-center relatedproductname">{{item?.title}}</h4>
                          
                           </div>
                         </div>

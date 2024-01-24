@@ -12,12 +12,14 @@ import Swal from 'sweetalert2';
 export class ProductdetailsComponent implements OnInit{
   selectedProduct: any; // Type should match your product object
   productdetail:any;
+  selectedImage: string | undefined;
   productsbycategory: any[] | any;
   productId: any;
   product: any; // Define your product type  
   visibleCards = 4; // Default value for screens larger than 500px
   currentIndex = 0;
   categories: any;
+  id!: any | null;
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
     this.updateVisibleCards();
@@ -25,23 +27,25 @@ export class ProductdetailsComponent implements OnInit{
   constructor(private router: Router,  private productService: ProductService, private route: ActivatedRoute, private cartservice: CartService) { }
 
   ngOnInit(): void {
+    this.selectedImage = this.productdetail?.product_Pic[0];
+
     this.updateVisibleCards();
-    this.route.params.subscribe(params => {
-      const productId = params['_id'];
-      console.log('Product ID:', productId);
+    // this.route.params.subscribe(params => {
+    // });
+      this.id =this.route.snapshot.paramMap.get('_id');
+      console.log('Product ID:', this.id);
 
       // Use productId to fetch and display product details
-      this.productService.getProductById(productId).subscribe((product: any) => { 
+      this.productService.getProductById(this.id).subscribe((product: any) => { 
         console.log("this is get product",  product)
         this.productdetail=product
   //  const categoryId= this.productdetail.map((item:any)=>item.categoryId);
-   console.log("this is category id", this.productdetail.categoryId[0]._id)
-   this.productService.getProductByCategory(this.productdetail.categoryId[0]._id).subscribe(res=>{
+   console.log("this is category id", this.productdetail.categoryId._id)
+   this.productService.getProductByCategory(this.productdetail.categoryId?._id).subscribe(res=>{
     console.log("these are products by category id", res)
     this.productsbycategory = res
    })
       });
-    });
 
    
    
@@ -64,7 +68,9 @@ export class ProductdetailsComponent implements OnInit{
       timer: 1500  // Adjust the timer as needed
     });
   }
-  
+  selectImage(image: string): void {
+    this.selectedImage = image;
+  }
   
   currentproducts = [
     {
