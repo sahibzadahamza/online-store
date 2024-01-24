@@ -16,7 +16,7 @@
               <div class="item firstdiv" *ngFor="let item of categories | slice: currentIndex : currentIndex + displayItemCount">
                 <div style="display: flex; justify-content: center;" (click)="showproductsofcategory(item._id)">
                   <div>
-                    <img width="50px" height="50px" [src]="item?.category_pic || '../../../assets/NoImage.jpeg'" alt="" class="firstcarouselimage">
+                    <img width="50px" height="50px" [src]="item?.category_Pic || '../../../assets/NoImage.jpeg'" alt="" class="firstcarouselimage">
                   </div>
                 </div>
                 <p class="catname">{{item?.categoryName}}</p>
@@ -25,13 +25,13 @@
             </div>
           </nav>
      </div>
-    <div class="container">
+    <div class="container ">
         <div class="my-3 d-flex">
         <input type="text" class="form-control" placeholder="Search products" [(ngModel)]="searchTerm">
         <button class="btn btn-warning mx-2" (click)="search()">Search</button>
         </div>
 
-        <div class="row">
+        <div class="row mt-5">
             <div class="col-md-4"   *ngFor="let item of products; let i = index" (click)="navigateToProductDetails(item?._id)">
                 <div *ngIf="showproducts" >
                     <div >
