@@ -51,10 +51,17 @@ export class ProductdetailsComponent implements OnInit{
    
   }
 
-  selectProduct(item:any){
-    console.log("selcted item" , item)
-    this.productdetail = item
-  }
+  selectProduct(item: any) {
+    console.log("selected item", item);
+    this.productdetail = item;
+
+    // Scroll to the top of the page
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // You can use 'auto' or 'instant' for different scrolling behavior
+    });
+}
+
 
   getAbsoluteDiscount(): number {
     return this.productdetail?.discount ? Math.abs(this.productdetail.discount) : 0;
