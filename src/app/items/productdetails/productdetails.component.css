@@ -75,6 +75,9 @@ h1{
         line-height: 32px;
         text-align: center;
     }
+    .Ingredients{
+        font-size: 17px;
+    }
     .buttondiv{
         display: flex;
         justify-content: center;

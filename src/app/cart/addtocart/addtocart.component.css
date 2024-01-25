@@ -49,4 +49,7 @@ h2{
     .btn-checkout{
         font-size: 1rem;
     }
+    .btn-primary{
+        margin: 0px !important;
+    }
 }
