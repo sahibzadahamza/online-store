@@ -108,3 +108,17 @@ h1{
         line-height: 32px;
     }
 }
+
+/* Add this in your component's CSS or global styles */
+.discounted-with-discount {
+    display: inline-block;
+}
+
+.original-price {
+    text-decoration: line-through;
+}
+
+.discounted-price {
+    color: #e56d1c; /* Set your desired highlight color */
+    font-weight: bold;
+}

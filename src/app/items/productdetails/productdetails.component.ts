@@ -55,19 +55,58 @@ export class ProductdetailsComponent implements OnInit{
     console.log("selcted item" , item)
     this.productdetail = item
   }
+
+  getAbsoluteDiscount(): number {
+    return this.productdetail?.discount ? Math.abs(this.productdetail.discount) : 0;
+  }
+
+  calculateDiscountedPrice(): number {
+    if (this.productdetail) {
+        const discountPercentage = this.getAbsoluteDiscount();
+        const discountMultiplier = 1 - discountPercentage / 100;
+        return this.productdetail.price * discountMultiplier;
+    }
+    return 0;
+  }
   
-  addToCart(product: any) {
-    this.cartservice.addToCart(product);
+  // addToCart(product: any) {
+  //   this.cartservice.addToCart(product);
   
+  //   // Display SweetAlert2 popup
+  //   Swal.fire({
+  //     icon: 'success',
+  //     title: 'Product Added to Cart',
+  //     text: `${product.name} has been added to your cart.`,
+  //     showConfirmButton: false,
+  //     timer: 1500  // Adjust the timer as needed
+  //   });
+  // }
+
+  addToCart(product: any): void {
+    let priceToAdd: number;
+
+    // Check if there is a discount
+    if (this.productdetail?.discount) {
+        // Calculate discounted price
+        priceToAdd = this.calculateDiscountedPrice();
+    } else {
+        // Use regular price
+        priceToAdd = this.productdetail?.price || 0;
+    }
+
+    // Add the product to the cart with the calculated price
+    this.cartservice.addToCart({ ...product, price: priceToAdd });
+
     // Display SweetAlert2 popup
     Swal.fire({
-      icon: 'success',
-      title: 'Product Added to Cart',
-      text: `${product.name} has been added to your cart.`,
-      showConfirmButton: false,
-      timer: 1500  // Adjust the timer as needed
+        icon: 'success',
+        title: 'Product Added to Cart',
+        text: `${product.name} has been added to your cart.`,
+        showConfirmButton: false,
+        timer: 1500  // Adjust the timer as needed
     });
-  }
+}
+
   selectImage(image: string): void {
     this.selectedImage = image;
   }

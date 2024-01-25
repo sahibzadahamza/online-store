@@ -1,93 +1,118 @@
 <div class="container-fluid ">
-    <div class="container ">
-        <div class="row py-5" *ngIf="productdetail">
-          <div class="col-md-6">
-            <div>
-              <img src="{{selectedImage || productdetail?.product_Pic[0] || '../../../assets/NoImage.jpeg' }}" alt="" width="100%" class="mainimg">
+  <div class="container ">
+    <div class="row py-5" *ngIf="productdetail">
+      <div class="col-md-6">
+        <div>
+          <img src="{{selectedImage || productdetail?.product_Pic[0] || '../../../assets/NoImage.jpeg' }}" alt=""
+            width="100%" class="mainimg">
+        </div>
+        <div class="d-flex mt-3">
+          <div style="width: 5rem; margin-right: 10px;" *ngFor="let pic of productdetail?.product_Pic">
+            <img src="{{pic}}" alt="" width="100%" class="belowpic" (click)="selectImage(pic)">
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 marginonmob">
+        <div class="d-block">
+          <h1>{{productdetail?.title}}</h1>
+          <!-- <span class="price ">{{productdetail?.price | currency}}</span> <br>
+          <span class="Ingredients ">Discount :{{productdetail?.discount}}%</span> <br> -->
+ <!-- Display discounted price if there's a discount -->
+ <ng-container *ngIf="productdetail?.discount">
+  <span class="price discounted-with-discount">
+      <span class="original-price">{{productdetail?.price | currency}}</span>
+      <span class="discounted-price mx-2">{{calculateDiscountedPrice() | currency}}</span>
+  </span>
+  <br>
+</ng-container>
+
+<!-- Display regular price if no discount -->
+<ng-container *ngIf="!productdetail?.discount">
+  <span class="price">{{productdetail?.price | currency}}</span> <br>
+</ng-container>
+
+<!-- Display discount information -->
+<span class="Ingredients" *ngIf="productdetail?.discount">Discount: {{getAbsoluteDiscount()}}%</span> <br>
+
+
+          <h2 class="details" style="color:#e56d1c; font-weight: 600;">Brand Name: {{productdetail?.brandName}}</h2>
+          <div class="buttondiv mb-3">
+            <button class="btn addtocart" (click)="addToCart(productdetail)">ADD TO CART</button>
+          </div>
+        </div>
+        <div>
+          <div class="d-flex details"> <span class="Ingredients">Product Category :</span> <span
+              class="mx-3">{{productdetail?.categoryId?.categoryName}}</span></div>
+          <div class="d-flex details" *ngIf="productdetail?.size !=''"> <span class="Ingredients">Size : </span><span
+              span class="mx-3">{{productdetail?.size}}</span></div>
+          <div class="d-flex details" *ngIf="productdetail?.weight !=''"><span class="Ingredients">Weight :</span> <span
+              span class="mx-3">{{productdetail?.weight}}</span></div>
+          <div class="d-flex details" *ngIf="productdetail?.volume !=''"><span class="Ingredients">Volume :</span> <span
+              span class="mx-3">{{productdetail?.volume}}</span></div>
+          <div class="d-flex details" *ngIf="productdetail?.dimentions !=''"><span
+              class="Ingredients">Dimensions:</span> <span span class="mx-3">{{productdetail?.dimentions}}</span></div>
+        </div>
+        <div class="d-block" *ngIf="productdetail?.ingredients !=''">
+          <h3 class="Ingredients">Ingredients:</h3>
+          <p class="">{{productdetail?.ingredients}}</p>
+        </div>
+        <p class="desc " *ngIf="productdetail?.description !=''">{{productdetail?.description}}</p>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="d-flex justify-content-between">
+        <div class="align">
+          <h2><b>Related Products</b> </h2>
+        </div>
+        <div>
+          <div class="d-flex">
+            <div class=" text-right d-flex justify-content-center align-items-center ">
+              <a class="btn btn-carousel p-2 px-3 mx-2" href="#carouselExampleIndicators2" role="button"
+                (click)="onPrevClick($event)">
+                <i class="fa fa-arrow-left"></i>
+              </a>
             </div>
-            <div class="d-flex mt-3">
-              <div style="width: 5rem; margin-right: 10px;" *ngFor="let pic of productdetail?.product_Pic">
-                <img src="{{pic}}" alt="" width="100%" class="belowpic" (click)="selectImage(pic)">
-              </div>
+            <div class=" text-left d-flex justify-content-center align-items-center ">
+              <a class="btn btn-carousel p-2 px-3 " href="#carouselExampleIndicators2" role="button"
+                (click)="onNextClick($event)">
+                <i class="fa fa-arrow-right"></i>
+              </a>
             </div>
           </div>
-          
-            <div class="col-md-6 marginonmob">
-                <div class="d-block">
-                    <h1>{{productdetail?.title}}</h1>
-                    <span class="price ">{{productdetail?.price | currency}}</span> <br>
-                    <span class="Ingredients ">Discount :{{productdetail?.discount | currency}}</span> <br>
+        </div>
+      </div>
+    </div>
+    <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+      <div class="row">
 
-                    
-                    <h2 class="details" style="color:#e56d1c; font-weight: 600;">Brand Name: {{productdetail?.brandName}}</h2>
-                    <div class="buttondiv mb-3">
-                        <button class="btn addtocart" (click)="addToCart(productdetail)">ADD TO CART</button>
-                    </div>
-                </div>
-                <div>
-                    <div class="d-flex details" > <span class="Ingredients">Product Category :</span> <span class="mx-3">{{productdetail?.categoryId?.categoryName}}</span></div>
-                    <div class="d-flex details" *ngIf="productdetail?.size !=''"> <span class="Ingredients">Size : </span><span span class="mx-3">{{productdetail?.size}}</span></div>
-                    <div class="d-flex details" *ngIf="productdetail?.weight !=''"><span class="Ingredients">Weight :</span> <span span class="mx-3">{{productdetail?.weight}}</span></div>
-                    <div class="d-flex details" *ngIf="productdetail?.volume !=''"><span class="Ingredients">Volume :</span> <span span class="mx-3">{{productdetail?.volume}}</span></div>
-                    <div class="d-flex details" *ngIf="productdetail?.dimentions !=''"><span class="Ingredients">Dimensions:</span> <span span class="mx-3">{{productdetail?.dimentions}}</span></div>
-                </div>
-                <div class="d-block" *ngIf="productdetail?.ingredients !=''">
-                    <h3 class="Ingredients">Ingredients:</h3>
-                    <p class="" >{{productdetail?.ingredients}}</p>
-                </div>
-                <p class="desc " *ngIf="productdetail?.description !=''">{{productdetail?.description}}</p>
-                
-            </div>
-        </div>
-        <div class="row">
-            <div class="d-flex justify-content-between">
-                <div class="align">
-                    <h2><b>Related Products</b> </h2>
-                </div>
-                <div>
-                    <div class="d-flex">
-                        <div class=" text-right d-flex justify-content-center align-items-center ">
-                          <a class="btn btn-carousel p-2 px-3 mx-2" href="#carouselExampleIndicators2" role="button" (click)="onPrevClick($event)">
-                            <i class="fa fa-arrow-left"></i>
-                          </a>
-                        </div>
-                        <div class=" text-left d-flex justify-content-center align-items-center ">
-                          <a class="btn btn-carousel p-2 px-3 " href="#carouselExampleIndicators2" role="button" (click)="onNextClick($event)">
-                            <i class="fa fa-arrow-right"></i>
-                          </a>
-                        </div>
+        <div class="col-12">
+          <ng-container class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="row">
+                <ng-container *ngFor="let item of productsbycategory; let i = index">
+                  <div style="background-color: #f9f9f9;" class="col-md-4 col-sm-12 mt-2 mb-3"
+                    *ngIf="i >= currentIndex && i < currentIndex + visibleCards">
+                    <div (click)="selectProduct(item)" style="cursor: pointer;">
+                      <div style="margin-top: 10px;">
+                        <img src="{{item?.product_Pic[0] || '../../../assets/NoImage.jpeg'}}" class="image " />
+                        <!-- <img *ngIf="!item.img" src="../../../../assets/patronpallogo.jpg " class="image border"/> -->
                       </div>
-                </div>
-            </div>
-        </div>
-        <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-            <div class="row">
-    
-              <div class="col-12">
-                <ng-container class="carousel-inner">
-                  <div class="carousel-item active">
-                    <div class="row">
-                      <ng-container *ngFor="let item of productsbycategory; let i = index">
-                        <div style="background-color: #f9f9f9;" class="col-md-4 col-sm-12 mt-2 mb-3" *ngIf="i >= currentIndex && i < currentIndex + visibleCards">
-                         <div (click)="selectProduct(item)" style="cursor: pointer;">
-                          <div style="margin-top: 10px;">
-                            <img  src="{{item?.product_Pic[0] || '../../../assets/NoImage.jpeg'}}" class="image " />
-                            <!-- <img *ngIf="!item.img" src="../../../../assets/patronpallogo.jpg " class="image border"/> -->
-                          </div>
-    
-                          <div  class=" mt-2 p-2">
-                            <h4 class="d-flex justify-content-center relatedproductname">{{item?.title}}</h4>
-                         
-                          </div>
-                        </div>
+
+                      <div class=" mt-2 p-2">
+                        <h4 class="d-flex justify-content-center relatedproductname">{{item?.title}}</h4>
+
                       </div>
-                      </ng-container>
                     </div>
                   </div>
                 </ng-container>
               </div>
-    
             </div>
-          </div>
+          </ng-container>
+        </div>
+
+      </div>
     </div>
+  </div>
 </div>
