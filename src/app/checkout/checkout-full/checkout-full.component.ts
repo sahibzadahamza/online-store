@@ -107,6 +107,7 @@ export class CheckoutFullComponent {
       cartWithQty:this.cartItems,
       subTotal:this.checkoutData?.cartSubtotal,
       shippingPrice:this.checkoutData?.shippingPrice,
+      status:'pending',
       Total:this.totalOfBill
     }
     console.log('data: ', data);
