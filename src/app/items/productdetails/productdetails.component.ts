@@ -16,7 +16,7 @@ export class ProductdetailsComponent implements OnInit{
   productsbycategory: any[] | any;
   productId: any;
   product: any; // Define your product type  
-  visibleCards = 4; // Default value for screens larger than 500px
+  visibleCards = 3; // Default value for screens larger than 500px
   currentIndex = 0;
   categories: any;
   id!: any | null;
@@ -155,7 +155,7 @@ export class ProductdetailsComponent implements OnInit{
     if (windowWidth < 500) {
       this.visibleCards = 1;
     } else {
-      this.visibleCards = 4; // Show 4 cards on screens larger than 500px
+      this.visibleCards = 3; // Show 4 cards on screens larger than 500px
     }
   }
   onPrevClick(event: Event) {
