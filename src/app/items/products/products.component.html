@@ -33,7 +33,7 @@
 
         <div class="row mt-5">
             <div class="col-md-3 "   *ngFor="let item of products; let i = index" (click)="navigateToProductDetails(item?._id)">
-                <div *ngIf="showproducts" style="background-color: #f9f9f9;" >
+                <div *ngIf="showproducts" style="background-color: #f9f9f9; cursor: pointer;" >
                     <div style="margin-top: 10px; padding: 10px;">
                         <img src="{{item.product_Pic[0] || '../../../assets/NoImage.jpeg'}}" alt="" class="image">
                     </div>
@@ -53,7 +53,7 @@
 
         <div class="row">
             <div class="col-md-3"   *ngFor="let item of filteredProducts; let i = index" (click)="navigateToProductDetails(item?._id)">
-                <div *ngIf="!showproducts" style="background-color: #f9f9f9;">
+                <div *ngIf="!showproducts" style="background-color: #f9f9f9; cursor: pointer;">
                     <div  style="margin-top: 10px; padding: 10px;">
                         <img src="{{item.product_Pic[0]}}" alt="" class="image">
                     </div>
