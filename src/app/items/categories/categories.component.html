@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             
-            <div class="col-md-3"   *ngFor="let item of category">
+            <div class="col-lg-3 col-md-4"   *ngFor="let item of category">
                 <div (click)="navigateToProduct(item._id)" style="background-color: #f9f9f9; cursor: pointer;">
                     <div  style="margin-top: 10px; padding: 10px;">
                         <img src="{{item?.category_Pic}}" alt="">
