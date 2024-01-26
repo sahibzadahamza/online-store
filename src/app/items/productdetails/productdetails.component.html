@@ -92,10 +92,10 @@
             <div class="carousel-item active">
               <div class="row">
                 <ng-container *ngFor="let item of productsbycategory; let i = index">
-                  <div style="background-color: #f9f9f9;" class="col-md-4 col-sm-12 mt-2 mb-3"
+                  <div  class="col-md-4 col-sm-12 mt-2 mb-3"
                     *ngIf="i >= currentIndex && i < currentIndex + visibleCards">
-                    <div (click)="selectProduct(item)" style="cursor: pointer;">
-                      <div style="margin-top: 10px;">
+                    <div (click)="selectProduct(item)" style="cursor: pointer; background-color: #f9f9f9; ">
+                      <div style="margin-top: 10px; padding: 10px;">
                         <img src="{{item?.product_Pic[0] || '../../../assets/NoImage.jpeg'}}" class="image " />
                         <!-- <img *ngIf="!item.img" src="../../../../assets/patronpallogo.jpg " class="image border"/> -->
                       </div>

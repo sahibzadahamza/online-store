@@ -45,7 +45,7 @@ h1{
 
 .image{
     width: 100%;
-    height: 17rem;
+    height: 22rem;
 }
 /* .mainimg{
     height: 25rem;
@@ -101,6 +101,9 @@ h1{
         font-size: 22px;
         font-weight: 600;
         line-height: 30px;
+    }
+    .image{
+        height: 14rem;
     }
 }
 @media screen and (max-width:1200px) and (min-width:993px){
