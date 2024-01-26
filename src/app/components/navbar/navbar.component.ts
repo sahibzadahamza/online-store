@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navbar',
@@ -28,7 +29,18 @@ export class NavbarComponent implements OnInit {
   gotoshop(){
     this.router.navigate(['/categories'])
   }
-  gotocart(){
-    this.router.navigate(['/cart'])
+  
+gotocart() {
+  if (this.cartItemCount > 0) {
+    // Navigate to the cart route
+    this.router.navigate(['/cart']);
+  } else {
+    // Display SweetAlert2 dialog for an empty cart
+    Swal.fire({
+      icon: 'info',
+      title: 'Empty Cart',
+      text: 'Your cart is empty. Add products to your cart before proceeding to checkout.',
+    });
   }
+}
 }

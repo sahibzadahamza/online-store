@@ -29,7 +29,7 @@
 
 <!-- Display regular price if no discount -->
 <ng-container *ngIf="!productdetail?.discount">
-  <span class="price">{{productdetail?.price | currency}}</span> <br>
+  <span class="price">{{productdetail?.price | currency}}</span> 
 </ng-container>
 
 <!-- Display discount information -->
@@ -57,7 +57,19 @@
           <h3 class="Ingredients">Ingredients:</h3>
           <p class="">{{productdetail?.ingredients}}</p>
         </div>
-        <p class="desc " *ngIf="productdetail?.description !=''">{{productdetail?.description}}</p>
+        <div class="d-block" *ngIf="productdetail?.description !='undefined'">
+          <h3 class="Ingredients">Description:</h3>
+          <p class="desc" *ngIf="productdetail?.description != ''">
+            {{ isCollapsed ? (productdetail?.description | slice:0:maxLength) : productdetail?.description }}
+            <span *ngIf="productdetail?.description.length > maxLength">
+              {{ isCollapsed ? '...' : '' }}
+              <button (click)="toggleCollapse()">
+                {{ isCollapsed ? 'See More' : 'See Less' }}
+              </button>
+            </span>
+          </p>
+        </div>
+
 
       </div>
     </div>
