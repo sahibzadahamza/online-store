@@ -14,7 +14,7 @@ export class CheckoutFullComponent {
   checkoutForm: FormGroup;
   totalOfBill!: number;
   paymentHandler: any;
-
+  cartItems:any[]=[];
   constructor(private cartService: CartService, private fb: FormBuilder) {
     this.checkoutForm = this.fb.group({
       firstname: ['', Validators.required],
@@ -28,9 +28,6 @@ export class CheckoutFullComponent {
       postcode: ['', Validators.required],
       phone: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      cardNumber: ['', Validators.required],
-      expiryDate: ['', Validators.required],
-      cvv: ['', Validators.required]
     });
   }
 
@@ -38,12 +35,17 @@ export class CheckoutFullComponent {
     // Subscribe to cartData$ to get the data when the component is initialized
     this.cartService.cartData$.subscribe((data) => {
       this.checkoutData = data;
-      console.log(this.checkoutData); // You can access the data here
+      this.cartItems=this.checkoutData?.cartItems
+      console.log("this.checkoutData",this.checkoutData); // You can access the data here
     });
     this.invokeStripe();
 
   }
-  makePayment(amount = this.totalOfBill) {
+  makePayment() {
+    // console.log('amount: ', amount);
+    this.totalOfBill=this.checkoutData?.cartSubtotal + this.checkoutData?.shippingPrice
+    console.log('this.totalOfBill: ', this.totalOfBill);
+  
     const paymentHandler = (<any>window).StripeCheckout.configure({
       key: 'pk_test_51OU6zGCmmMR3QnqjFs5OAR5WalJaanq6CanhZAYrHhHj1FHHsFijNx9ZBL36U4z78EQi64JtYWmblIlZflsWaH3k00AkW504zW',
       locale: 'auto',
@@ -54,7 +56,7 @@ export class CheckoutFullComponent {
     });
     const paymentstripe = (stripeToken: any) => {
       console.log('stripeToken: ', stripeToken.id);
-      const amountInDollars = amount;
+      const amountInDollars = this.totalOfBill;
       const amountInCents = Math.round(amountInDollars * 100);
       let data = {
         "amount": amountInCents,
@@ -64,7 +66,7 @@ export class CheckoutFullComponent {
 
       this.cartService.makePayments(data).subscribe((data: any) => {
         console.log('data: ', data);
-        
+        this.placeOrder()
       });
     };
     paymentHandler.open({
@@ -93,23 +95,24 @@ export class CheckoutFullComponent {
   }
   placeOrder() {
     // Log form values and other data{}
-    console.log('Form Values:', this.checkoutForm.value);
-    console.log('Cart Items:', this.checkoutData.cartItems);
-    console.log('Cart Subtotal:', this.checkoutData.cartSubtotal);
-    console.log('Shipping Price:', this.checkoutData.shippingPrice);
-    this.totalOfBill=this.checkoutData.cartSubtotal + this.checkoutData.shippingPrice
+    console.log('Form Values:', this.checkoutForm?.value);
+    console.log('Cart Items:', this.checkoutData?.cartItems);
+    console.log('Cart Subtotal:', this.checkoutData?.cartSubtotal);
+    console.log('Shipping Price:', this.checkoutData?.shippingPrice);
+    this.totalOfBill=this.checkoutData?.cartSubtotal + this.checkoutData?.shippingPrice
     console.log('Total:', this.totalOfBill);
     let data={
       customerDetails:this.checkoutForm.value,
-      cartItems: this.checkoutData.cartItems,
-      subTotal:this.checkoutData.cartSubtotal,
-      shippingPrice:this.checkoutData.shippingPrice,
+      cartItems: this.cartItems?.map((item:any)=>item._id),
+      cartWithQty:this.cartItems,
+      subTotal:this.checkoutData?.cartSubtotal,
+      shippingPrice:this.checkoutData?.shippingPrice,
       Total:this.totalOfBill
     }
+    console.log('data: ', data);
     this.cartService.saveOrder(data).subscribe({
       next:(order)=>{
         console.log('order: ', order);
-        this.makePayment(this.totalOfBill)
       },
       error:(error)=>{
         console.log('error: ', error);

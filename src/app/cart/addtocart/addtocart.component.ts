@@ -28,6 +28,8 @@ export class AddtocartComponent implements OnInit{
       cartItems: this.cartItems.map(item => ({
         name: item.title,
         price: item.price,
+        _id:item._id,
+        pic:item.product_Pic,
         quantity: item.quantity,  // Ensure 'quantity' is present in each item
         subtotal: item.subtotal
       })),
