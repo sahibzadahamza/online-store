@@ -41,11 +41,12 @@ h1{
     padding-right: 50px!important;
     padding-bottom: 11px!important;
     padding-left: 50px!important;
+    margin: 10px 0px !important;
 }
 
 .image{
     width: 100%;
-    height: 18rem;
+    height: 22rem;
 }
 /* .mainimg{
     height: 25rem;
@@ -102,6 +103,9 @@ h1{
         font-weight: 600;
         line-height: 30px;
     }
+    .image{
+        height: 14rem;
+    }
 }
 @media screen and (max-width:1200px) and (min-width:993px){
     h1{
@@ -125,3 +129,19 @@ h1{
     color: #e56d1c; /* Set your desired highlight color */
     font-weight: bold;
 }
+/* app.component.css */
+
+   .desc {
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out;
+  }
+  
+  button {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    background: none;
+    color: #e56d1c;
+    font-weight: 600;
+  } 
+  

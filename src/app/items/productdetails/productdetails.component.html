@@ -29,7 +29,7 @@
 
 <!-- Display regular price if no discount -->
 <ng-container *ngIf="!productdetail?.discount">
-  <span class="price">{{productdetail?.price | currency}}</span> <br>
+  <span class="price">{{productdetail?.price | currency}}</span> 
 </ng-container>
 
 <!-- Display discount information -->
@@ -57,7 +57,19 @@
           <h3 class="Ingredients">Ingredients:</h3>
           <p class="">{{productdetail?.ingredients}}</p>
         </div>
-        <p class="desc " *ngIf="productdetail?.description !=''">{{productdetail?.description}}</p>
+        <div class="d-block" *ngIf="productdetail?.description !='undefined'">
+          <h3 class="Ingredients">Description:</h3>
+          <p class="desc" *ngIf="productdetail?.description != ''">
+            {{ isCollapsed ? (productdetail?.description | slice:0:maxLength) : productdetail?.description }}
+            <span *ngIf="productdetail?.description.length > maxLength">
+              {{ isCollapsed ? '...' : '' }}
+              <button (click)="toggleCollapse()">
+                {{ isCollapsed ? 'See More' : 'See Less' }}
+              </button>
+            </span>
+          </p>
+        </div>
+
 
       </div>
     </div>
@@ -92,10 +104,10 @@
             <div class="carousel-item active">
               <div class="row">
                 <ng-container *ngFor="let item of productsbycategory; let i = index">
-                  <div style="background-color: #f9f9f9;" class="col-md-4 col-sm-12 mt-2 mb-3"
+                  <div  class="col-md-4 col-sm-12 mt-2 mb-3"
                     *ngIf="i >= currentIndex && i < currentIndex + visibleCards">
-                    <div (click)="selectProduct(item)" style="cursor: pointer;">
-                      <div style="margin-top: 10px;">
+                    <div (click)="selectProduct(item)" style="cursor: pointer; background-color: #f9f9f9; ">
+                      <div style="margin-top: 10px; padding: 10px;">
                         <img src="{{item?.product_Pic[0] || '../../../assets/NoImage.jpeg'}}" class="image " />
                         <!-- <img *ngIf="!item.img" src="../../../../assets/patronpallogo.jpg " class="image border"/> -->
                       </div>
