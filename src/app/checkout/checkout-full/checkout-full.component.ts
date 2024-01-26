@@ -12,6 +12,8 @@ export class CheckoutFullComponent {
   public countries:any = countries
   checkoutData: any;
   checkoutForm: FormGroup;
+  totalOfBill!: number;
+  paymentHandler: any;
 
   constructor(private cartService: CartService, private fb: FormBuilder) {
     this.checkoutForm = this.fb.group({
@@ -38,15 +40,81 @@ export class CheckoutFullComponent {
       this.checkoutData = data;
       console.log(this.checkoutData); // You can access the data here
     });
-  }
+    this.invokeStripe();
 
+  }
+  makePayment(amount = this.totalOfBill) {
+    const paymentHandler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_51OU6zGCmmMR3QnqjFs5OAR5WalJaanq6CanhZAYrHhHj1FHHsFijNx9ZBL36U4z78EQi64JtYWmblIlZflsWaH3k00AkW504zW',
+      locale: 'auto',
+      token: function (stripeToken: any) {
+        console.log("stripe token1 console:", stripeToken);
+        paymentstripe(stripeToken);
+      },
+    });
+    const paymentstripe = (stripeToken: any) => {
+      console.log('stripeToken: ', stripeToken.id);
+      const amountInDollars = amount;
+      const amountInCents = Math.round(amountInDollars * 100);
+      let data = {
+        "amount": amountInCents,
+        "currency": "usd",
+        "source": stripeToken.id,
+      }
+
+      this.cartService.makePayments(data).subscribe((data: any) => {
+        console.log('data: ', data);
+        
+      });
+    };
+    paymentHandler.open({
+      name: 'BuyDelight4u',
+      amount: this.totalOfBill * 100,
+    
+    });
+  }
+  invokeStripe() {
+    if (!window.document.getElementById('stripe-script')) {
+      const script = window.document.createElement('script');
+      script.id = 'stripe-script';
+      script.type = 'text/javascript';
+      script.src = 'https://checkout.stripe.com/checkout.js';
+      script.onload = () => {
+        this.paymentHandler = (<any>window).StripeCheckout.configure({
+          key: 'pk_test_51OU6zGCmmMR3QnqjFs5OAR5WalJaanq6CanhZAYrHhHj1FHHsFijNx9ZBL36U4z78EQi64JtYWmblIlZflsWaH3k00AkW504zW',
+          locale: 'auto',
+          token: function (stripeToken: any) {
+            console.log(stripeToken);
+          },
+        });
+      };
+      window.document.body.appendChild(script);
+    }
+  }
   placeOrder() {
-    // Log form values and other data
+    // Log form values and other data{}
     console.log('Form Values:', this.checkoutForm.value);
     console.log('Cart Items:', this.checkoutData.cartItems);
     console.log('Cart Subtotal:', this.checkoutData.cartSubtotal);
     console.log('Shipping Price:', this.checkoutData.shippingPrice);
-    console.log('Total:', this.checkoutData.cartSubtotal + this.checkoutData.shippingPrice);
+    this.totalOfBill=this.checkoutData.cartSubtotal + this.checkoutData.shippingPrice
+    console.log('Total:', this.totalOfBill);
+    let data={
+      customerDetails:this.checkoutForm.value,
+      cartItems: this.checkoutData.cartItems,
+      subTotal:this.checkoutData.cartSubtotal,
+      shippingPrice:this.checkoutData.shippingPrice,
+      Total:this.totalOfBill
+    }
+    this.cartService.saveOrder(data).subscribe({
+      next:(order)=>{
+        console.log('order: ', order);
+        this.makePayment(this.totalOfBill)
+      },
+      error:(error)=>{
+        console.log('error: ', error);
+      }
+    })
   }
  
  

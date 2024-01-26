@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,8 @@ export class CartService {
 
   private cartItemCount = new BehaviorSubject<number>(0);
   currentCartItemCount = this.cartItemCount.asObservable();
-
+  apiUrl: any=environment.apiUrl;
+constructor(private http:HttpClient){}
   // Other methods to manage cart items...
 
   updateCartItemCount() {
@@ -70,5 +73,21 @@ export class CartService {
   getTotalQuantity(): number {
     return this.cartItems.reduce((total, item) => total + item.quantity, 0);
   }
+
+  makePayments(stripeToken: any): Observable<any> {
+    const url = `${this.apiUrl}/checkout`
+    const body ={
+      stripeToken,
+    }
+    return this.http.post<any>(url,body)
+  }
+  saveOrder(order: any) {
+    return this.http.post(`${environment.apiUrl}/order`, order);
+  }
+
+  updateOrder(order: any) {
+    return this.http.put(`${environment.apiUrl}/order/${order._id}`, order);
+  }
+
 
 }
