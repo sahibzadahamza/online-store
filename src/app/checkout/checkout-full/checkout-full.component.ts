@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { countries } from 'src/app/models/country-data-store';
 import { CartService } from 'src/app/services/cart.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-checkout-full',
@@ -15,7 +17,8 @@ export class CheckoutFullComponent {
   totalOfBill!: number;
   paymentHandler: any;
   cartItems:any[]=[];
-  constructor(private cartService: CartService, private fb: FormBuilder) {
+  constructor(private cartService: CartService, private fb: FormBuilder,
+    private router:Router) {
     this.checkoutForm = this.fb.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -114,9 +117,18 @@ export class CheckoutFullComponent {
     this.cartService.saveOrder(data).subscribe({
       next:(order)=>{
         console.log('order: ', order);
+        Swal.fire({
+          title: 'Success!',
+          text: 'order created successfully.',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          this.router.navigate(['/']);
+        });
       },
       error:(error)=>{
         console.log('error: ', error);
+        Swal.fire('Error', 'An error occurred while making the order.', 'error');
       }
     })
   }
