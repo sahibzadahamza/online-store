@@ -35,9 +35,10 @@
     height: 5rem;
     text-transform: uppercase;
     align-items: center;
-    display: flex;
+    /* display: flex;
     text-align: center;
-    justify-content: start; 
+    justify-content: start;  */
+    overflow: hidden;
 }
 .image{
     height: 20rem;
