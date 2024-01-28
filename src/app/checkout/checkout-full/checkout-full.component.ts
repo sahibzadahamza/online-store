@@ -50,7 +50,7 @@ export class CheckoutFullComponent {
     console.log('this.totalOfBill: ', this.totalOfBill);
   
     const paymentHandler = (<any>window).StripeCheckout.configure({
-      key: 'pk_test_51OU6zGCmmMR3QnqjFs5OAR5WalJaanq6CanhZAYrHhHj1FHHsFijNx9ZBL36U4z78EQi64JtYWmblIlZflsWaH3k00AkW504zW',
+      key: 'pk_live_51OUlcvKFo8KY8fOzJkZURpSj1pKYJjQKek6PiaaU46DkOGVDTnfvlkWyB1cxIJhmlgekN6Pb8fVVpNkUPVAECJP200HNGqY7iF',
       locale: 'auto',
       token: function (stripeToken: any) {
         console.log("stripe token1 console:", stripeToken);
@@ -86,7 +86,7 @@ export class CheckoutFullComponent {
       script.src = 'https://checkout.stripe.com/checkout.js';
       script.onload = () => {
         this.paymentHandler = (<any>window).StripeCheckout.configure({
-          key: 'pk_test_51OU6zGCmmMR3QnqjFs5OAR5WalJaanq6CanhZAYrHhHj1FHHsFijNx9ZBL36U4z78EQi64JtYWmblIlZflsWaH3k00AkW504zW',
+          key: 'pk_live_51OUlcvKFo8KY8fOzJkZURpSj1pKYJjQKek6PiaaU46DkOGVDTnfvlkWyB1cxIJhmlgekN6Pb8fVVpNkUPVAECJP200HNGqY7iF',
           locale: 'auto',
           token: function (stripeToken: any) {
             console.log(stripeToken);
