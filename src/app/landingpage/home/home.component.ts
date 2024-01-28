@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit{
       const products: any[] | any = res;
   
       // Get only the first two products
-      this.firstTwoProducts = products.slice(0, 4);
+      this.firstTwoProducts = products.slice(0, 8);
   
       console.log("These are the first two products in home", this.firstTwoProducts);
   });
