@@ -9,8 +9,8 @@
 export const environment = {
   production: false,
   name: "{DEV}",
-  // apiUrl: 'https://valvador-backend.onrender.com/api',
-  apiUrl : 'http://localhost:2222/api',
+  apiUrl: 'https://valvador-backend.onrender.com/api',
+  // apiUrl : 'http://localhost:2222/api',
 
   // socketUrl : 'https://api.patronworks.net',
   // stripeClientId:'ca_NTuk60cLep4m855LRtD8jL3Hasxtssjp',
