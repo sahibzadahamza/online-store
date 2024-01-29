@@ -45,15 +45,15 @@
         <!-- <h2 class="headtwo my-4">Vanilla Lippies</h2> -->
         <div class="row my-4">
             <div class="col-lg-3 col-md-6 mb-5 cursor"  *ngFor="let item of firstTwoProducts">
-                <div  (click)="gotodetails(item?._id)">
+                <div  (click)="gotodetails(item?._id)" style="position: relative;">
                     <div class="">
                         <img src="{{item?.product_Pic[0]}}" alt="" width="100%" class="imagediv">
                     </div>
                     <div class="details">
                         <h2 class="headtwotop my-3">{{item?.title}}</h2>
-                        <p class="price">{{item?.price | currency}}</p>
+                        <p class="price" style="position: absolute; top: -10px; right: -10px;">{{item?.price | currency}}</p>
                         <!-- <p class="description">{{item?.shortDescription}}</p> -->
-                        <button class="btn cartbtn">View Details</button>
+                        <button class="btn cartbtn w-100">View Details</button>
                     </div>
                 </div>
             </div>

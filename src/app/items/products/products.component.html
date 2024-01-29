@@ -12,7 +12,7 @@
         <h3>Other Categories</h3>
         <nav class="navbar">
             <div class="container  main-container">
-              <button class="btn prev-btn" (click)="prev()"><i class="fa fa-chevron-left"></i></button>
+              <button class="btn prev-btn" (click)="prev()"><i class="fa fa-chevron-left" style="color: white;"></i></button>
               <div class="item firstdiv" *ngFor="let item of categories | slice: currentIndex : currentIndex + displayItemCount">
                 <div style="display: flex; justify-content: center;" (click)="showproductsofcategory(item._id)">
                   <div>
@@ -21,20 +21,20 @@
                 </div>
                 <p class="catname">{{item?.categoryName}}</p>
               </div>
-              <button class="btn next-btn" (click)="next()"><i class="fa fa-chevron-right"></i></button>
+              <button class="btn next-btn" (click)="next()"><i class="fa fa-chevron-right" style="color: white;"></i></button>
             </div>
           </nav>
      </div>
     <div class="container ">
         <div class="my-3 d-flex">
         <input type="text" class="form-control" placeholder="Search products" [(ngModel)]="searchTerm">
-        <button class="btn btn-warning mx-2" (click)="search()">Search</button>
+        <!-- <button class="btn btn-warning mx-2" (click)="search()">Search</button> -->
         </div>
 
         <div class="row mt-5">
-            <div class="col-lg-3 col-md-4"   *ngFor="let item of products; let i = index" (click)="navigateToProductDetails(item?._id)">
+            <div class="col-lg-3 col-md-4"   *ngFor="let item of products | filter:searchTerm; let i = index" (click)="navigateToProductDetails(item?._id)">
 
-                <div *ngIf="showproducts" style="background-color: #f9f9f9; cursor: pointer; position: relative;" class="showprod mb-4">
+                <div *ngIf="showproducts" style="background-color: #f9f9f9; cursor: pointer; position: relative;" class="showprod mb-5">
                     <div style="margin-top: 10px; padding: 10px;">
                         <img src="{{item.product_Pic[0] || '../../../assets/NoImage.jpeg'}}" alt="" class="image">
                     </div>
@@ -53,9 +53,9 @@
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-3 col-md-4"   *ngFor="let item of filteredProducts; let i = index" (click)="navigateToProductDetails(item?._id)">
-                <div *ngIf="!showproducts" style="background-color: #f9f9f9; cursor: pointer; position: relative;">
+                <div *ngIf="!showproducts" style="background-color: #f9f9f9; cursor: pointer; position: relative;" class="mb-5">
                     <div  style="margin-top: 10px; padding: 10px;">
                         <img src="{{item.product_Pic[0]}}" alt="" class="image">
                     </div>
@@ -71,6 +71,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>

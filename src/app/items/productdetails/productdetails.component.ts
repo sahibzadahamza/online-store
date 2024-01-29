@@ -51,6 +51,7 @@ export class ProductdetailsComponent implements OnInit {
      private cartservice: CartService) { }
 
   ngOnInit(): void {
+    // this.selectProduct(item)
     this.selectedImage = this.productdetail?.product_Pic[0];
     this.updateVisibleCards();
     // this.route.params.subscribe(params => {

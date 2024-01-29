@@ -105,5 +105,7 @@ export class ProductsComponent implements OnInit {
        this.products = res
     })
   }
-
+  // public doFilter=(value:string)=>{
+  //   this.paymentListData.filter=value.trim().toLocaleLowerCase()
+  // }
 }

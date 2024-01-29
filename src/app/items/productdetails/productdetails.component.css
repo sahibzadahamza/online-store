@@ -43,7 +43,13 @@ h1{
     padding-left: 50px!important;
     margin: 10px 0px !important;
 }
-
+.save{
+    color: white;
+    background-color: red;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 22px;
+}
 .image{
     width: 100%;
     height: 22rem;

@@ -7,20 +7,25 @@ import { ProductsComponent } from './products/products.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterPipe } from '../models/filter.pipe';
 
 
 @NgModule({
   declarations: [
     CategoriesComponent,
     ProductsComponent,
-    ProductdetailsComponent
+    ProductdetailsComponent,
+    FilterPipe
+
   ],
   imports: [
     CommonModule,
     ItemsRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
+  providers:[
+  ]
 })
 export class ItemsModule { }
