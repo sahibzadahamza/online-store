@@ -18,7 +18,7 @@ constructor( private fb : FormBuilder, private contactService:ContactService){
     name: ['', Validators.required],
     surname: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
-    phone: [''],
+    telephone: [''],
     message: ['', Validators.required],
   });
 }
