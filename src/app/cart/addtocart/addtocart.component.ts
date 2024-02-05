@@ -11,7 +11,7 @@ export class AddtocartComponent implements OnInit{
 
   cartSubtotal: number = 0;
   total: number = 0; 
-  shippingPrice: number = 17; 
+  shippingPrice: number = 0; 
   constructor(private router: Router, private cartService: CartService){}
   ngOnInit(): void {
     this.cartItems = this.cartService.getCartItems();
@@ -79,7 +79,7 @@ export class AddtocartComponent implements OnInit{
       if (this.cartSubtotal >= 200) {
           this.shippingPrice = 0;
       } else {
-          this.shippingPrice = 17; // Reset to the original shipping price
+          this.shippingPrice = 0; // Reset to the original shipping price
       }
   }
   
