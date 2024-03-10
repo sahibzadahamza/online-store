@@ -139,7 +139,7 @@ img{
     width: 80%;
 }
 .form-control{
-    background-color: #DCD2DF;
+    background-color: lightgray;
     font-size: 1.5rem;
     border: none;
     color: gray;
@@ -165,7 +165,7 @@ img{
 .buy{
     font-size: 4rem;
     font-weight: bolder;
-    color: #C9B6D3;
+    color: #e56d1c;
 }
 @media screen and (max-width:992px) and (min-width:601px){
     .imagediv{
