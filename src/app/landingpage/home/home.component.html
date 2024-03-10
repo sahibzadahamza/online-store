@@ -37,7 +37,7 @@
     <div class="container">
         <div class="row">
           <div class="">
-            <!-- <h3> <strong>Categories</strong> </h3> -->
+            <h1 class="d-flex justify-content-center"> <strong>Shop by Departments</strong> </h1>
             <nav class="navbar py-5">
                 <div class="container  main-container">
                   <button class="btn prev-btn" (click)="prev()"><i class="fa fa-chevron-left" style="color: white;"></i></button>
@@ -79,6 +79,9 @@
                         <h2 class="headtwotop my-3">{{item?.title}}</h2>
                         <p class="price" style="position: absolute; top: -10px; right: -10px;">{{item?.price | currency}}</p>
                         <!-- <p class="description">{{item?.shortDescription}}</p> -->
+                        <div >
+                          <span *ngIf="item?.discount"  class="d-flex align-items-center off" style="position: absolute; top: -10px; left: -10px;" >{{item?.discount}}% Off</span>
+                      </div>
                         <button class="btn cartbtn w-100">View Details</button>
                     </div>
                 </div>

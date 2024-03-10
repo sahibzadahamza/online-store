@@ -90,7 +90,7 @@ img{
     width: 100%;
 }
 .price{
-    font-size: 20px;
+    font-size: 18px;
     line-height: 25px;
     font-weight: 600;
     display: flex;
@@ -167,6 +167,20 @@ img{
     font-weight: bolder;
     color: #e56d1c;
 }
+.off{
+    font-size: 15px;
+    /* line-height: 30px; */
+    text-align: center;
+    font-weight: 600;
+    color: white;
+    background: red;
+    border-radius: 10px;
+    padding: 5px 10px;
+    /* height: 5rem; */
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
 @media screen and (max-width:992px) and (min-width:601px){
     .imagediv{
         height: 25rem;

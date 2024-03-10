@@ -57,6 +57,20 @@
   display: flex;
   justify-content: center;
 }
+.off{
+  font-size: 15px;
+  /* line-height: 30px; */
+  text-align: center;
+  font-weight: 600;
+  color: white;
+  background: red;
+  border-radius: 10px;
+  padding: 5px 10px;
+  /* height: 5rem; */
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
 img{
     width: 100%;
 }
