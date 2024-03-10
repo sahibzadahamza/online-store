@@ -1,4 +1,7 @@
 <div class="container-fluid p-0">
+  <div class="marquee">
+    <h3 class="mb-0 py-3 beautiful-text">Get an exclusive 14% discount on Your First Order</h3>
+  </div>
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -33,13 +36,30 @@
 <div class="container-fluid mt-5">
     <div class="container">
         <div class="row">
-            <h1 class="heading">DISCOVER THE NEEDS WITH BUY DELIGHT</h1>
+          <div class="">
+            <!-- <h3> <strong>Categories</strong> </h3> -->
+            <nav class="navbar py-5">
+                <div class="container  main-container">
+                  <button class="btn prev-btn" (click)="prev()"><i class="fa fa-chevron-left" style="color: white;"></i></button>
+                  <div class="item firstdiv" *ngFor="let item of categories | slice: currentIndex : currentIndex + displayItemCount">
+                    <div style="display: flex; justify-content: center; cursor: pointer;" (click)="navigateToProduct(item._id)">
+                      <div>
+                        <img  [src]="item?.category_Pic || '../../../assets/NoImage.jpeg'" alt="" class="firstcarouselimage">
+                      </div>
+                    </div>
+                    <p class="catname">{{item?.categoryName}}</p>
+                  </div>
+                  <button class="btn next-btn" (click)="next()"><i class="fa fa-chevron-right" style="color: white;"></i></button>
+                </div>
+              </nav>
+         </div>
+            <!-- <h1 class="heading">DISCOVER THE NEEDS WITH BUY DELIGHT</h1>
             
             <p class="para family">
                 welcome to BuyDelight, your one-stop shop for groceries, high-quality mobile accessories, cosmetics,
                 and necessities for the car. Find a carefully chosen assortment of premium products that improve your
                 way of life. Savor the ease of safe online purchasing, quick delivery, and top-notch customer support.
-                Shop with confidence at BuyDelight, where convenience and quality collide.</p>
+                Shop with confidence at BuyDelight, where convenience and quality collide.</p> -->
             <p class="para"><strong>Our commitment to quality ensures that every product in our diverse range meets the
                     highest standards, guaranteeing satisfaction with every purchase. Embrace the joy of shopping and
                     elevate your lifestyle with BuyDelight – where variety, excellence, and
