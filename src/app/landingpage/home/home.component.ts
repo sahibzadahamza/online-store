@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit{
-  firstTwoProducts: any[]=[];
+  firstEightProducts: any[]=[];
   discount: any;
   price: any;
   categories: any[] =[];
@@ -32,17 +32,25 @@ export class HomeComponent implements OnInit{
     this.productservice.getProducts().subscribe(res => {
       // Assuming the API response contains an array of products
       const products: any[] | any = res;
-  
-      // Get only the first two products
-      this.firstTwoProducts = products.slice(0, 8);
-  
-      console.log("These are the first two products in home", this.firstTwoProducts);
+     // Shuffle the products array
+     this.shuffleArray(products);
+
+     // Get the first eight products
+     this.firstEightProducts = products.slice(0, 8);
+
+     console.log("These are the first eight products:", this.firstEightProducts);
   });
   this.updateDisplayItemCount();
   this.updateDisplayItemCount2()
   window.addEventListener('resize', () => this.updateDisplayItemCount());
   window.addEventListener('resize', () => this.updateDisplayItemCount2());
  
+  }
+  shuffleArray(array: any[]): void {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
   }
   navigateToProduct(id: any) {
     this.router.navigate(['/categories/products', id]); // Assuming there is an 'id' property in your product object
