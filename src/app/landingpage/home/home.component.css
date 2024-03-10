@@ -220,6 +220,9 @@ img{
 }
 
 @media screen and (max-width:600px){
+    .catname{
+        font-size: 10px;
+    }
     .beautiful-text {
         font-size: 18px !important;
         color: black;

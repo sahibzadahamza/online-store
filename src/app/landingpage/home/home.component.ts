@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit{
      this.shuffleArray(products);
 
      // Get the first eight products
-     this.firstEightProducts = products.slice(0, 8);
+     this.firstEightProducts = products.slice(0, 12);
 
      console.log("These are the first eight products:", this.firstEightProducts);
   });
