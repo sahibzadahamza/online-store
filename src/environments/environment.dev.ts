@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
   name: "",
-  apiUrl: '',
+  apiUrl: 'https://valvador-backend.onrender.com/api',
   socketUrl : '',
   stripeClientId:'',
   stripeKey:''
